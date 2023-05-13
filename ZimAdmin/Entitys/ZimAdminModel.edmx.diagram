@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a3dc87f966674ed5be164449263c917d" Name="Diagram1">
+        <EntityTypeShape EntityType="Privat_HospitalModel.Admins" Width="1.5" PointX="5.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Privat_HospitalModel.Appointments" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Privat_HospitalModel.Conclusions" Width="1.5" PointX="8.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Privat_HospitalModel.Doctors" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Privat_HospitalModel.Patients" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Privat_HospitalModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Privat_HospitalModel.Types_of_services" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Privat_HospitalModel.Work_Shift" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Privat_HospitalModel.FK_Appointments_Doctors1" ManuallyRouted="false" />
+        <AssociationConnector Association="Privat_HospitalModel.FK_Appointments_Patients1" ManuallyRouted="false" />
+        <AssociationConnector Association="Privat_HospitalModel.FK_Conclusions_Doctors1" ManuallyRouted="false" />
+        <AssociationConnector Association="Privat_HospitalModel.FK_Conclusions_Patients1" ManuallyRouted="false" />
+        <AssociationConnector Association="Privat_HospitalModel.FK_Doctors_Types_of_services" ManuallyRouted="false" />
+        <AssociationConnector Association="Privat_HospitalModel.FK_Doctors_Work_Shift" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

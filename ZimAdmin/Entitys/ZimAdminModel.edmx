@@ -1,0 +1,522 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище Privat_HospitalModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admins">
+          <Key>
+            <PropertyRef Name="id_Admin" />
+          </Key>
+          <Property Name="id_Admin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Last_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="First_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Middle_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="image" Type="image" />
+        </EntityType>
+        <EntityType Name="Appointments">
+          <Key>
+            <PropertyRef Name="id_Appointmaent" />
+          </Key>
+          <Property Name="id_Appointmaent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Doctor" Type="int" Nullable="false" />
+          <Property Name="id_Patient" Type="int" Nullable="false" />
+          <Property Name="DataTime_Appointment" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Conclusions">
+          <Key>
+            <PropertyRef Name="id_Counclusion" />
+          </Key>
+          <Property Name="id_Counclusion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Patient" Type="int" Nullable="false" />
+          <Property Name="id_Doctor" Type="int" Nullable="false" />
+          <Property Name="Complaint" Type="nvarchar(max)" />
+          <Property Name="Life_History" Type="nvarchar(max)" />
+          <Property Name="Objective_Status" Type="nvarchar(max)" />
+          <Property Name="Diagnosis" Type="nvarchar(max)" />
+          <Property Name="Treatment" Type="nvarchar(max)" />
+          <Property Name="DataTime_Conclusion" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Doctors">
+          <Key>
+            <PropertyRef Name="id_Doctor" />
+          </Key>
+          <Property Name="id_Doctor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Last_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="First_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Middle_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Specialty" Type="int" Nullable="false" />
+          <Property Name="Shift" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Patients">
+          <Key>
+            <PropertyRef Name="id_Patient" />
+          </Key>
+          <Property Name="id_Patient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Last_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="First_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Middle_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="17" Nullable="false" />
+          <Property Name="Bithday" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Types_of_services">
+          <Key>
+            <PropertyRef Name="id_Type" />
+          </Key>
+          <Property Name="id_Type" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cost" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Work_Shift">
+          <Key>
+            <PropertyRef Name="id_Shift" />
+          </Key>
+          <Property Name="id_Shift" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Start_Work_Day" Type="time" Precision="7" Nullable="false" />
+          <Property Name="End_Work_Day" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Appointments_Doctors1">
+          <End Role="Doctors" Type="Self.Doctors" Multiplicity="1" />
+          <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctors">
+              <PropertyRef Name="id_Doctor" />
+            </Principal>
+            <Dependent Role="Appointments">
+              <PropertyRef Name="id_Doctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Appointments_Patients1">
+          <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+          <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patients">
+              <PropertyRef Name="id_Patient" />
+            </Principal>
+            <Dependent Role="Appointments">
+              <PropertyRef Name="id_Patient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Conclusions_Doctors1">
+          <End Role="Doctors" Type="Self.Doctors" Multiplicity="1" />
+          <End Role="Conclusions" Type="Self.Conclusions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctors">
+              <PropertyRef Name="id_Doctor" />
+            </Principal>
+            <Dependent Role="Conclusions">
+              <PropertyRef Name="id_Doctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Conclusions_Patients1">
+          <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+          <End Role="Conclusions" Type="Self.Conclusions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patients">
+              <PropertyRef Name="id_Patient" />
+            </Principal>
+            <Dependent Role="Conclusions">
+              <PropertyRef Name="id_Patient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doctors_Types_of_services">
+          <End Role="Types_of_services" Type="Self.Types_of_services" Multiplicity="1" />
+          <End Role="Doctors" Type="Self.Doctors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Types_of_services">
+              <PropertyRef Name="id_Type" />
+            </Principal>
+            <Dependent Role="Doctors">
+              <PropertyRef Name="Specialty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doctors_Work_Shift">
+          <End Role="Work_Shift" Type="Self.Work_Shift" Multiplicity="1" />
+          <End Role="Doctors" Type="Self.Doctors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Work_Shift">
+              <PropertyRef Name="id_Shift" />
+            </Principal>
+            <Dependent Role="Doctors">
+              <PropertyRef Name="Shift" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище Privat_HospitalModelContainer">
+          <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Appointments" EntityType="Self.Appointments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Conclusions" EntityType="Self.Conclusions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doctors" EntityType="Self.Doctors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patients" EntityType="Self.Patients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Types_of_services" EntityType="Self.Types_of_services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Work_Shift" EntityType="Self.Work_Shift" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Appointments_Doctors1" Association="Self.FK_Appointments_Doctors1">
+            <End Role="Doctors" EntitySet="Doctors" />
+            <End Role="Appointments" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Appointments_Patients1" Association="Self.FK_Appointments_Patients1">
+            <End Role="Patients" EntitySet="Patients" />
+            <End Role="Appointments" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Conclusions_Doctors1" Association="Self.FK_Conclusions_Doctors1">
+            <End Role="Doctors" EntitySet="Doctors" />
+            <End Role="Conclusions" EntitySet="Conclusions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Conclusions_Patients1" Association="Self.FK_Conclusions_Patients1">
+            <End Role="Patients" EntitySet="Patients" />
+            <End Role="Conclusions" EntitySet="Conclusions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doctors_Types_of_services" Association="Self.FK_Doctors_Types_of_services">
+            <End Role="Types_of_services" EntitySet="Types_of_services" />
+            <End Role="Doctors" EntitySet="Doctors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doctors_Work_Shift" Association="Self.FK_Doctors_Work_Shift">
+            <End Role="Work_Shift" EntitySet="Work_Shift" />
+            <End Role="Doctors" EntitySet="Doctors" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Privat_HospitalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admins">
+          <Key>
+            <PropertyRef Name="id_Admin" />
+          </Key>
+          <Property Name="id_Admin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Middle_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Appointments">
+          <Key>
+            <PropertyRef Name="id_Appointmaent" />
+          </Key>
+          <Property Name="id_Appointmaent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Doctor" Type="Int32" Nullable="false" />
+          <Property Name="id_Patient" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Doctors" Relationship="Self.FK_Appointments_Doctors1" FromRole="Appointments" ToRole="Doctors" />
+          <NavigationProperty Name="Patients" Relationship="Self.FK_Appointments_Patients1" FromRole="Appointments" ToRole="Patients" />
+          <Property Name="DataTime_Appointment" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="Conclusions">
+          <Key>
+            <PropertyRef Name="id_Counclusion" />
+          </Key>
+          <Property Name="id_Counclusion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Patient" Type="Int32" Nullable="false" />
+          <Property Name="id_Doctor" Type="Int32" Nullable="false" />
+          <Property Name="DataTime_Conclusion" Type="DateTime" Precision="0" Nullable="false" />
+          <NavigationProperty Name="Doctors" Relationship="Self.FK_Conclusions_Doctors1" FromRole="Conclusions" ToRole="Doctors" />
+          <NavigationProperty Name="Patients" Relationship="Self.FK_Conclusions_Patients1" FromRole="Conclusions" ToRole="Patients" />
+          <Property Name="Complaint" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Life_History" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Objective_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Diagnosis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Treatment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Doctors">
+          <Key>
+            <PropertyRef Name="id_Doctor" />
+          </Key>
+          <Property Name="id_Doctor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Middle_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Specialty" Type="Int32" Nullable="false" />
+          <Property Name="Shift" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK_Appointments_Doctors1" FromRole="Doctors" ToRole="Appointments" />
+          <NavigationProperty Name="Conclusions" Relationship="Self.FK_Conclusions_Doctors1" FromRole="Doctors" ToRole="Conclusions" />
+          <NavigationProperty Name="Types_of_services" Relationship="Self.FK_Doctors_Types_of_services" FromRole="Doctors" ToRole="Types_of_services" />
+          <NavigationProperty Name="Work_Shift" Relationship="Self.FK_Doctors_Work_Shift" FromRole="Doctors" ToRole="Work_Shift" />
+        </EntityType>
+        <EntityType Name="Patients">
+          <Key>
+            <PropertyRef Name="id_Patient" />
+          </Key>
+          <Property Name="id_Patient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Middle_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="17" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Bithday" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK_Appointments_Patients1" FromRole="Patients" ToRole="Appointments" />
+          <NavigationProperty Name="Conclusions" Relationship="Self.FK_Conclusions_Patients1" FromRole="Patients" ToRole="Conclusions" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Types_of_services">
+          <Key>
+            <PropertyRef Name="id_Type" />
+          </Key>
+          <Property Name="id_Type" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cost" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Doctors" Relationship="Self.FK_Doctors_Types_of_services" FromRole="Types_of_services" ToRole="Doctors" />
+        </EntityType>
+        <EntityType Name="Work_Shift">
+          <Key>
+            <PropertyRef Name="id_Shift" />
+          </Key>
+          <Property Name="id_Shift" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Start_Work_Day" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="End_Work_Day" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Doctors" Relationship="Self.FK_Doctors_Work_Shift" FromRole="Work_Shift" ToRole="Doctors" />
+        </EntityType>
+        <Association Name="FK_Appointments_Doctors1">
+          <End Role="Doctors" Type="Self.Doctors" Multiplicity="1" />
+          <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctors">
+              <PropertyRef Name="id_Doctor" />
+            </Principal>
+            <Dependent Role="Appointments">
+              <PropertyRef Name="id_Doctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Appointments_Patients1">
+          <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+          <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patients">
+              <PropertyRef Name="id_Patient" />
+            </Principal>
+            <Dependent Role="Appointments">
+              <PropertyRef Name="id_Patient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Conclusions_Doctors1">
+          <End Role="Doctors" Type="Self.Doctors" Multiplicity="1" />
+          <End Role="Conclusions" Type="Self.Conclusions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctors">
+              <PropertyRef Name="id_Doctor" />
+            </Principal>
+            <Dependent Role="Conclusions">
+              <PropertyRef Name="id_Doctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Conclusions_Patients1">
+          <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+          <End Role="Conclusions" Type="Self.Conclusions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patients">
+              <PropertyRef Name="id_Patient" />
+            </Principal>
+            <Dependent Role="Conclusions">
+              <PropertyRef Name="id_Patient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doctors_Types_of_services">
+          <End Role="Types_of_services" Type="Self.Types_of_services" Multiplicity="1" />
+          <End Role="Doctors" Type="Self.Doctors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Types_of_services">
+              <PropertyRef Name="id_Type" />
+            </Principal>
+            <Dependent Role="Doctors">
+              <PropertyRef Name="Specialty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doctors_Work_Shift">
+          <End Role="Work_Shift" Type="Self.Work_Shift" Multiplicity="1" />
+          <End Role="Doctors" Type="Self.Doctors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Work_Shift">
+              <PropertyRef Name="id_Shift" />
+            </Principal>
+            <Dependent Role="Doctors">
+              <PropertyRef Name="Shift" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Privat_HospitalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admins" />
+          <EntitySet Name="Appointments" EntityType="Self.Appointments" />
+          <EntitySet Name="Conclusions" EntityType="Self.Conclusions" />
+          <EntitySet Name="Doctors" EntityType="Self.Doctors" />
+          <EntitySet Name="Patients" EntityType="Self.Patients" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Types_of_services" EntityType="Self.Types_of_services" />
+          <EntitySet Name="Work_Shift" EntityType="Self.Work_Shift" />
+          <AssociationSet Name="FK_Appointments_Doctors1" Association="Self.FK_Appointments_Doctors1">
+            <End Role="Doctors" EntitySet="Doctors" />
+            <End Role="Appointments" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Appointments_Patients1" Association="Self.FK_Appointments_Patients1">
+            <End Role="Patients" EntitySet="Patients" />
+            <End Role="Appointments" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Conclusions_Doctors1" Association="Self.FK_Conclusions_Doctors1">
+            <End Role="Doctors" EntitySet="Doctors" />
+            <End Role="Conclusions" EntitySet="Conclusions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Conclusions_Patients1" Association="Self.FK_Conclusions_Patients1">
+            <End Role="Patients" EntitySet="Patients" />
+            <End Role="Conclusions" EntitySet="Conclusions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doctors_Types_of_services" Association="Self.FK_Doctors_Types_of_services">
+            <End Role="Types_of_services" EntitySet="Types_of_services" />
+            <End Role="Doctors" EntitySet="Doctors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doctors_Work_Shift" Association="Self.FK_Doctors_Work_Shift">
+            <End Role="Work_Shift" EntitySet="Work_Shift" />
+            <End Role="Doctors" EntitySet="Doctors" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Privat_HospitalModelContainer" CdmEntityContainer="Privat_HospitalEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="Privat_HospitalModel.Admins">
+              <MappingFragment StoreEntitySet="Admins">
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="id_Admin" ColumnName="id_Admin" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Middle_Name" ColumnName="Middle_Name" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Appointments">
+            <EntityTypeMapping TypeName="Privat_HospitalModel.Appointments">
+              <MappingFragment StoreEntitySet="Appointments">
+                <ScalarProperty Name="DataTime_Appointment" ColumnName="DataTime_Appointment" />
+                <ScalarProperty Name="id_Appointmaent" ColumnName="id_Appointmaent" />
+                <ScalarProperty Name="id_Doctor" ColumnName="id_Doctor" />
+                <ScalarProperty Name="id_Patient" ColumnName="id_Patient" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Conclusions">
+            <EntityTypeMapping TypeName="Privat_HospitalModel.Conclusions">
+              <MappingFragment StoreEntitySet="Conclusions">
+                <ScalarProperty Name="Treatment" ColumnName="Treatment" />
+                <ScalarProperty Name="Diagnosis" ColumnName="Diagnosis" />
+                <ScalarProperty Name="Objective_Status" ColumnName="Objective_Status" />
+                <ScalarProperty Name="Life_History" ColumnName="Life_History" />
+                <ScalarProperty Name="Complaint" ColumnName="Complaint" />
+                <ScalarProperty Name="id_Counclusion" ColumnName="id_Counclusion" />
+                <ScalarProperty Name="id_Patient" ColumnName="id_Patient" />
+                <ScalarProperty Name="id_Doctor" ColumnName="id_Doctor" />
+                <ScalarProperty Name="DataTime_Conclusion" ColumnName="DataTime_Conclusion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doctors">
+            <EntityTypeMapping TypeName="Privat_HospitalModel.Doctors">
+              <MappingFragment StoreEntitySet="Doctors">
+                <ScalarProperty Name="id_Doctor" ColumnName="id_Doctor" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Middle_Name" ColumnName="Middle_Name" />
+                <ScalarProperty Name="Specialty" ColumnName="Specialty" />
+                <ScalarProperty Name="Shift" ColumnName="Shift" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patients">
+            <EntityTypeMapping TypeName="Privat_HospitalModel.Patients">
+              <MappingFragment StoreEntitySet="Patients">
+                <ScalarProperty Name="id_Patient" ColumnName="id_Patient" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Middle_Name" ColumnName="Middle_Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Bithday" ColumnName="Bithday" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Privat_HospitalModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Types_of_services">
+            <EntityTypeMapping TypeName="Privat_HospitalModel.Types_of_services">
+              <MappingFragment StoreEntitySet="Types_of_services">
+                <ScalarProperty Name="id_Type" ColumnName="id_Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Work_Shift">
+            <EntityTypeMapping TypeName="Privat_HospitalModel.Work_Shift">
+              <MappingFragment StoreEntitySet="Work_Shift">
+                <ScalarProperty Name="id_Shift" ColumnName="id_Shift" />
+                <ScalarProperty Name="Start_Work_Day" ColumnName="Start_Work_Day" />
+                <ScalarProperty Name="End_Work_Day" ColumnName="End_Work_Day" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
