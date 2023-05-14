@@ -49,7 +49,7 @@ namespace ZimAdmin
 
         private void miProfile_Click(object sender, RoutedEventArgs e)
         {
-            ManageClass.getFrame.Navigate(new ProfilePage(AuthPage.admins));
+            ManageClass.getFrame.Navigate(new ProfilePage());
         }
 
         private void miExit_Click(object sender, RoutedEventArgs e)

@@ -22,10 +22,11 @@ namespace ZimAdmin.Pages
     /// </summary>
     public partial class PatientsPage : Page
     {
+        CharsBlocker blocker = new CharsBlocker();
         public PatientsPage()
         {
             InitializeComponent();
-            dgPatients.ItemsSource = GetDbContext.GetContext().Patients.ToList();
+            searchPatient();
         }
 
         private void btnLookConclution_Click(object sender, RoutedEventArgs e)
@@ -50,6 +51,41 @@ namespace ZimAdmin.Pages
                 GetDbContext.GetContext().ChangeTracker.Entries().ToList().ForEach(entry => entry.Reload());
                 dgPatients.ItemsSource = GetDbContext.GetContext().Patients.ToList();
             }
+        }
+
+        private void searchPatient()
+        {
+            List<Patients> patients = GetDbContext.GetContext().Patients.ToList();
+
+            patients = patients.Where(p => p.Last_Name.ToLower().Contains(tbxSearchLName.Text.ToLower())).ToList();
+            
+            if(patients.Count == 0)
+            {
+                dgPatients.Visibility = Visibility.Collapsed;
+                tbNotFound.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                dgPatients.Visibility = Visibility.Visible;
+                tbNotFound.Visibility = Visibility.Collapsed;
+            }
+
+            dgPatients.ItemsSource = patients;
+        }
+
+        private void SearchPatient(object sender, TextChangedEventArgs e)
+        {
+            searchPatient();
+        }
+
+        private void tbxSearchLName_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            blocker.onlyLetters(e);
+        }
+
+        private void tbxSearchLName_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            blocker.spaceBlocker(e);
         }
     }
 }

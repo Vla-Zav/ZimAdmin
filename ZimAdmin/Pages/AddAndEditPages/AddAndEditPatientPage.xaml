@@ -30,9 +30,9 @@
             <TextBlock Style="{StaticResource tbTemplate}" HorizontalAlignment="Left" Margin="10 10 0 0" Text="Телефон"/>
             <xctk:MaskedTextBox Mask="+7(999)-999-99-99" x:Name="tbxPatientPhone" Style="{StaticResource tbxTemplate}" HorizontalAlignment="Left" Width="auto" Margin="10 0 0 10" Text="{Binding Phone}"/>
             <TextBlock Style="{StaticResource tbTemplate}" HorizontalAlignment="Left" Margin="10 10 0 0" Text="Дата рождения"/>
-            <DatePicker x:Name="calBDPatient" SelectedDate="{Binding Bithday}" Margin="10 0" FontSize="20" HorizontalAlignment="Left" DisplayDateStart="1900-01-01" DisplayDateEnd="2023-01-01"/>
+            <DatePicker x:Name="calBDPatient" SelectedDate="{Binding Bithday}" Margin="10 0" FontSize="20" HorizontalAlignment="Left" DisplayDateStart="1900-01-01" DisplayDateEnd="2023-01-01" KeyDown="calBDPatient_KeyDown" PreviewKeyDown="calBDPatient_PreviewKeyDown"/>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0 10">
+        <StackPanel Grid.ColumnSpan="2" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="1" Margin="0 10" Grid.Column="1">
             <Button x:Name="btnSaveChanges" Content="Сохранить" Style="{StaticResource btnTemplate}" HorizontalAlignment="Left" Click="btnSaveChanges_Click"/>
             <Button x:Name="btnBack" Content="Назад" Style="{StaticResource btnTemplate}" Click="btnBack_Click" HorizontalAlignment="Left"/>
         </StackPanel>

@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZimAdmin.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="760" d:DesignWidth="1000"
       Title="PatientConclusionsPage">
 
     <Grid>
@@ -13,50 +13,53 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="dgCounclusion" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Доктор" Binding="{Binding Doctors.Last_Name}"/>
-                <DataGridTemplateColumn Header="Жалобы">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBox IsReadOnly="True" Height="auto" TextWrapping="Wrap" Text="{Binding Complaint}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Анемниз жизни">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBox IsReadOnly="True" Height="auto" TextWrapping="Wrap" Text="{Binding Life_History}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Объект. статус">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBox IsReadOnly="True" Height="auto" TextWrapping="Wrap" Text="{Binding Objective_Status}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Диагноз">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBox IsReadOnly="True" Height="auto" TextWrapping="Wrap" Text="{Binding Diagnosis}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Лечение">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBox IsReadOnly="True" Height="auto" TextWrapping="Wrap" Text="{Binding Treatment}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTextColumn Header="Дата и время" Binding="{Binding DataTime_Conclusion, StringFormat=dd.MM.yyyy HH:mm}"/>
-            </DataGrid.Columns>
-        </DataGrid>
-        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0 10">
+        <StackPanel Margin="10">
+            <TextBlock Text="Заключения" Style="{StaticResource tbTemplate}" HorizontalAlignment="Left"/>
+            <DataGrid x:Name="dgCounclusion" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Доктор" Binding="{Binding Doctors.Last_Name}"/>
+                    <DataGridTemplateColumn Header="Жалобы">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox IsReadOnly="True" Height="auto" TextWrapping="Wrap" Text="{Binding Complaint}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Анемниз жизни">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox IsReadOnly="True" Height="auto" TextWrapping="Wrap" Text="{Binding Life_History}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Объект. статус">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox IsReadOnly="True" Height="auto" TextWrapping="Wrap" Text="{Binding Objective_Status}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Диагноз">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox IsReadOnly="True" Height="auto" TextWrapping="Wrap" Text="{Binding Diagnosis}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Лечение">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox IsReadOnly="True" Height="auto" TextWrapping="Wrap" Text="{Binding Treatment}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Дата и время" Binding="{Binding DataTime_Conclusion, StringFormat=dd.MM.yyyy HH:mm}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0 10" HorizontalAlignment="Right">
+            <Button x:Name="btnExport" Content="Сформировать заключение" Style="{StaticResource btnTemplate}" Click="btnExport_Click" />
             <Button x:Name="bltnBack" Content="Назад" Style="{StaticResource btnTemplate}" Click="btnBack_Click"/>
-            <Button x:Name="btnExport" Content="Печать заключения" Style="{StaticResource btnTemplate}" Click="btnExport_Click" />
         </StackPanel>
     </Grid>
 </Page>

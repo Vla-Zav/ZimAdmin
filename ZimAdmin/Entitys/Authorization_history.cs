@@ -12,20 +12,12 @@ namespace ZimAdmin.Entitys
     using System;
     using System.Collections.Generic;
     
-    public partial class Work_shift
+    public partial class Authorization_history
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Work_shift()
-        {
-            this.Doctors = new HashSet<Doctors>();
-        }
+        public long id_Auth { get; set; }
+        public int id_Admin { get; set; }
+        public System.DateTime DateAuth { get; set; }
     
-        public int id_Shift { get; set; }
-        public System.TimeSpan Start_Work_Day { get; set; }
-        public System.TimeSpan End_Work_Day { get; set; }
-        public string Number { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Doctors> Doctors { get; set; }
+        public virtual Admins Admins { get; set; }
     }
 }

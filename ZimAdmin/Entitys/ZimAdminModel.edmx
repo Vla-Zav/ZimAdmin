@@ -26,6 +26,14 @@
           <Property Name="id_Patient" Type="int" Nullable="false" />
           <Property Name="DataTime_Appointment" Type="smalldatetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="Authorization_history">
+          <Key>
+            <PropertyRef Name="id_Auth" />
+          </Key>
+          <Property Name="id_Auth" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Admin" Type="int" Nullable="false" />
+          <Property Name="DateAuth" Type="smalldatetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Conclusions">
           <Key>
             <PropertyRef Name="id_Counclusion" />
@@ -80,13 +88,14 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Cost" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Work_Shift">
+        <EntityType Name="Work_shift">
           <Key>
             <PropertyRef Name="id_Shift" />
           </Key>
-          <Property Name="id_Shift" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Shift" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Start_Work_Day" Type="time" Precision="7" Nullable="false" />
           <Property Name="End_Work_Day" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Number" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK_Appointments_Doctors1">
           <End Role="Doctors" Type="Self.Doctors" Multiplicity="1" />
@@ -109,6 +118,18 @@
             </Principal>
             <Dependent Role="Appointments">
               <PropertyRef Name="id_Patient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Authorization_history_Admins">
+          <End Role="Admins" Type="Self.Admins" Multiplicity="1" />
+          <End Role="Authorization_history" Type="Self.Authorization_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admins">
+              <PropertyRef Name="id_Admin" />
+            </Principal>
+            <Dependent Role="Authorization_history">
+              <PropertyRef Name="id_Admin" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -149,10 +170,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Doctors_Work_Shift">
-          <End Role="Work_Shift" Type="Self.Work_Shift" Multiplicity="1" />
+          <End Role="Work_shift" Type="Self.Work_shift" Multiplicity="1" />
           <End Role="Doctors" Type="Self.Doctors" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Work_Shift">
+            <Principal Role="Work_shift">
               <PropertyRef Name="id_Shift" />
             </Principal>
             <Dependent Role="Doctors">
@@ -163,12 +184,13 @@
         <EntityContainer Name="Хранилище Privat_HospitalModelContainer">
           <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Appointments" EntityType="Self.Appointments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Authorization_history" EntityType="Self.Authorization_history" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Conclusions" EntityType="Self.Conclusions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Doctors" EntityType="Self.Doctors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Patients" EntityType="Self.Patients" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Types_of_services" EntityType="Self.Types_of_services" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Work_Shift" EntityType="Self.Work_Shift" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Work_shift" EntityType="Self.Work_shift" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Appointments_Doctors1" Association="Self.FK_Appointments_Doctors1">
             <End Role="Doctors" EntitySet="Doctors" />
             <End Role="Appointments" EntitySet="Appointments" />
@@ -176,6 +198,10 @@
           <AssociationSet Name="FK_Appointments_Patients1" Association="Self.FK_Appointments_Patients1">
             <End Role="Patients" EntitySet="Patients" />
             <End Role="Appointments" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Authorization_history_Admins" Association="Self.FK_Authorization_history_Admins">
+            <End Role="Admins" EntitySet="Admins" />
+            <End Role="Authorization_history" EntitySet="Authorization_history" />
           </AssociationSet>
           <AssociationSet Name="FK_Conclusions_Doctors1" Association="Self.FK_Conclusions_Doctors1">
             <End Role="Doctors" EntitySet="Doctors" />
@@ -190,7 +216,7 @@
             <End Role="Doctors" EntitySet="Doctors" />
           </AssociationSet>
           <AssociationSet Name="FK_Doctors_Work_Shift" Association="Self.FK_Doctors_Work_Shift">
-            <End Role="Work_Shift" EntitySet="Work_Shift" />
+            <End Role="Work_shift" EntitySet="Work_shift" />
             <End Role="Doctors" EntitySet="Doctors" />
           </AssociationSet>
         </EntityContainer>
@@ -209,6 +235,7 @@
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Authorization_history" Relationship="Privat_HospitalModel.FK_Authorization_history_Admins" FromRole="Admins" ToRole="Authorization_history" />
         </EntityType>
         <EntityType Name="Appointments">
           <Key>
@@ -250,7 +277,7 @@
           <NavigationProperty Name="Appointments" Relationship="Self.FK_Appointments_Doctors1" FromRole="Doctors" ToRole="Appointments" />
           <NavigationProperty Name="Conclusions" Relationship="Self.FK_Conclusions_Doctors1" FromRole="Doctors" ToRole="Conclusions" />
           <NavigationProperty Name="Types_of_services" Relationship="Self.FK_Doctors_Types_of_services" FromRole="Doctors" ToRole="Types_of_services" />
-          <NavigationProperty Name="Work_Shift" Relationship="Self.FK_Doctors_Work_Shift" FromRole="Doctors" ToRole="Work_Shift" />
+          <NavigationProperty Name="Work_shift" Relationship="Privat_HospitalModel.FK_Doctors_Work_shift1" FromRole="Doctors" ToRole="Work_shift1" />
         </EntityType>
         <EntityType Name="Patients">
           <Key>
@@ -283,15 +310,6 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Cost" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Doctors" Relationship="Self.FK_Doctors_Types_of_services" FromRole="Types_of_services" ToRole="Doctors" />
-        </EntityType>
-        <EntityType Name="Work_Shift">
-          <Key>
-            <PropertyRef Name="id_Shift" />
-          </Key>
-          <Property Name="id_Shift" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Start_Work_Day" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="End_Work_Day" Type="Time" Nullable="false" Precision="7" />
-          <NavigationProperty Name="Doctors" Relationship="Self.FK_Doctors_Work_Shift" FromRole="Work_Shift" ToRole="Doctors" />
         </EntityType>
         <Association Name="FK_Appointments_Doctors1">
           <End Role="Doctors" Type="Self.Doctors" Multiplicity="1" />
@@ -353,18 +371,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Doctors_Work_Shift">
-          <End Role="Work_Shift" Type="Self.Work_Shift" Multiplicity="1" />
-          <End Role="Doctors" Type="Self.Doctors" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Work_Shift">
-              <PropertyRef Name="id_Shift" />
-            </Principal>
-            <Dependent Role="Doctors">
-              <PropertyRef Name="Shift" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Privat_HospitalEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Admins" EntityType="Self.Admins" />
           <EntitySet Name="Appointments" EntityType="Self.Appointments" />
@@ -373,7 +379,6 @@
           <EntitySet Name="Patients" EntityType="Self.Patients" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Types_of_services" EntityType="Self.Types_of_services" />
-          <EntitySet Name="Work_Shift" EntityType="Self.Work_Shift" />
           <AssociationSet Name="FK_Appointments_Doctors1" Association="Self.FK_Appointments_Doctors1">
             <End Role="Doctors" EntitySet="Doctors" />
             <End Role="Appointments" EntitySet="Appointments" />
@@ -394,11 +399,60 @@
             <End Role="Types_of_services" EntitySet="Types_of_services" />
             <End Role="Doctors" EntitySet="Doctors" />
           </AssociationSet>
-          <AssociationSet Name="FK_Doctors_Work_Shift" Association="Self.FK_Doctors_Work_Shift">
-            <End Role="Work_Shift" EntitySet="Work_Shift" />
+          <EntitySet Name="Authorization_history" EntityType="Privat_HospitalModel.Authorization_history" />
+          <AssociationSet Name="FK_Authorization_history_Admins" Association="Privat_HospitalModel.FK_Authorization_history_Admins">
+            <End Role="Admins" EntitySet="Admins" />
+            <End Role="Authorization_history" EntitySet="Authorization_history" />
+          </AssociationSet>
+          <EntitySet Name="Work_shift" EntityType="Privat_HospitalModel.Work_shift" />
+          <AssociationSet Name="FK_Doctors_Work_shift1" Association="Privat_HospitalModel.FK_Doctors_Work_shift1">
+            <End Role="Work_shift1" EntitySet="Work_shift" />
             <End Role="Doctors" EntitySet="Doctors" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Authorization_history">
+          <Key>
+            <PropertyRef Name="id_Auth" />
+          </Key>
+          <Property Name="id_Auth" Type="Int64" Nullable="false" />
+          <Property Name="id_Admin" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Admins" Relationship="Privat_HospitalModel.FK_Authorization_history_Admins" FromRole="Authorization_history" ToRole="Admins" />
+          <Property Name="DateAuth" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <Association Name="FK_Authorization_history_Admins">
+          <End Type="Privat_HospitalModel.Admins" Role="Admins" Multiplicity="1" />
+          <End Type="Privat_HospitalModel.Authorization_history" Role="Authorization_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admins">
+              <PropertyRef Name="id_Admin" />
+            </Principal>
+            <Dependent Role="Authorization_history">
+              <PropertyRef Name="id_Admin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Work_shift">
+          <Key>
+            <PropertyRef Name="id_Shift" />
+          </Key>
+          <Property Name="id_Shift" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Start_Work_Day" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="End_Work_Day" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Doctors" Relationship="Privat_HospitalModel.FK_Doctors_Work_shift1" FromRole="Work_shift1" ToRole="Doctors" />
+          <Property Name="Number" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Doctors_Work_shift1">
+          <End Type="Privat_HospitalModel.Work_shift" Role="Work_shift1" Multiplicity="1" />
+          <End Type="Privat_HospitalModel.Doctors" Role="Doctors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Work_shift1">
+              <PropertyRef Name="id_Shift" />
+            </Principal>
+            <Dependent Role="Doctors">
+              <PropertyRef Name="Shift" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -487,12 +541,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Work_Shift">
-            <EntityTypeMapping TypeName="Privat_HospitalModel.Work_Shift">
-              <MappingFragment StoreEntitySet="Work_Shift">
-                <ScalarProperty Name="id_Shift" ColumnName="id_Shift" />
-                <ScalarProperty Name="Start_Work_Day" ColumnName="Start_Work_Day" />
+          <EntitySetMapping Name="Authorization_history">
+            <EntityTypeMapping TypeName="Privat_HospitalModel.Authorization_history">
+              <MappingFragment StoreEntitySet="Authorization_history">
+                <ScalarProperty Name="DateAuth" ColumnName="DateAuth" />
+                <ScalarProperty Name="id_Admin" ColumnName="id_Admin" />
+                <ScalarProperty Name="id_Auth" ColumnName="id_Auth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Work_shift">
+            <EntityTypeMapping TypeName="Privat_HospitalModel.Work_shift">
+              <MappingFragment StoreEntitySet="Work_shift">
+                <ScalarProperty Name="Number" ColumnName="Number" />
                 <ScalarProperty Name="End_Work_Day" ColumnName="End_Work_Day" />
+                <ScalarProperty Name="Start_Work_Day" ColumnName="Start_Work_Day" />
+                <ScalarProperty Name="id_Shift" ColumnName="id_Shift" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

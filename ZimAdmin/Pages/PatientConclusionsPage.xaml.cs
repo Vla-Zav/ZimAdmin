@@ -108,12 +108,9 @@ namespace ZimAdmin.Pages
                 application.Visible = true;
 
                 document.SaveAs2($"Заключение от {DateTime.Today.ToShortDateString()} В.{conclusion.Doctors.Last_Name} П.{conclusion.Patients.Last_Name} №{conclusion.id_Counclusion}.docx");
+                document.SaveAs2($"Заключение от {DateTime.Today.ToShortDateString()} В.{conclusion.Doctors.Last_Name} П.{conclusion.Patients.Last_Name} №{conclusion.id_Counclusion}.pdf", Word.WdExportFormat.wdExportFormatPDF);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Ошибка работы с документом", MessageBoxButton.OK, MessageBoxImage.Warning); }
         }
     }
 }
-
-           /* Word.Paragraph adminParagraph = document.Paragraphs.Add();
-            Word.Range adminRange = headerParagraph.Range;
-            adminRange.Text = $"Андминистратор, выдавший заключение: {AuthPage.admins.Last_Name} {AuthPage.admins.First_Name} {AuthPage.admins.Middle_Name}\n";*/

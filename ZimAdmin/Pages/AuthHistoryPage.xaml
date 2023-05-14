@@ -1,0 +1,33 @@
+﻿<Page x:Class="ZimAdmin.Pages.AuthHistoryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ZimAdmin.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AuthHistoryPage" IsVisibleChanged="Page_IsVisibleChanged">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="10">
+            <TextBlock Text="История авторизаций" HorizontalAlignment="Left" Style="{StaticResource tbTemplate}"/>
+            <Grid>
+                <TextBlock x:Name="tbNotFound" Text="Здесь пока ничего нет" Visibility="Collapsed" Style="{StaticResource tbTemplate}"/>
+                <DataGrid CanUserResizeRows="False" AutoGenerateColumns="False" CanUserResizeColumns="False" IsReadOnly="True" ColumnWidth="*" x:Name="dgAuthHistory">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Логин администратора" Binding="{Binding Admins.Login}"/>
+                        <DataGridTextColumn Header="Дата и время" Binding="{Binding DateAuth, StringFormat=dd.MM.yyyy HH:mm}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Margin="0 10" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="btnClear" Content="Очистить историю" Style="{StaticResource btnTemplate}" HorizontalAlignment="Right" Click="btnClear_Click"/>
+            <Button x:Name="btnBack" Content="Назад" Style="{StaticResource btnTemplate}" HorizontalAlignment="Right" Click="btnBack_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

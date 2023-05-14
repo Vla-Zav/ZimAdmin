@@ -24,7 +24,7 @@
                 <TextBox x:Name="tbxCostService" Text="{Binding Cost}" Style="{StaticResource tbxTemplate}" Width="auto" MinWidth="100" PreviewTextInput="tbxCostService_PreviewTextInput" PreviewKeyDown="tbxCostService_PreviewKeyDown"/>
             </StackPanel>
         </StackPanel>
-        <StackPanel Grid.Row="1" Margin="0 10" Orientation="Horizontal">
+        <StackPanel Grid.Row="1" Margin="0 10" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button x:Name="btnSave" Content="Сохранить" Style="{StaticResource btnTemplate}" Click="btnSave_Click"/>
             <Button x:Name="btnCancel" Content="Назад" Style="{StaticResource btnTemplate}" Click="btnCancel_Click"/>
         </StackPanel>
