@@ -23,15 +23,19 @@ namespace ZimAdmin.Pages
     public partial class AuthPage : Page
     {
         CharsBlocker blocker = new CharsBlocker();
+        
         Privat_HospitalEntities hospitalEntities = new Privat_HospitalEntities();
+        public static Admins admins;
+        Authorization_history history;
+
+        public static int unsuccessfulAttempts = 0;
         public AuthPage()
         {
             InitializeComponent();
+            history = new Authorization_history();
         }
 
-        public static int unsuccessfulAttempts = 0;
 
-        public static Admins admins;
 
         private void btnTemplate_Click(object sender, RoutedEventArgs e)
         {
@@ -60,7 +64,16 @@ namespace ZimAdmin.Pages
             }
             if (isAuth)
             {
-                DataContext = admins;
+                try
+                {
+                    DataContext = admins;
+                    history.DateAuth = DateTime.Now;
+                    history.id_Admin = admins.id_Admin;
+                    GetDbContext.GetContext().Authorization_history.Add(history);
+                    GetDbContext.GetContext().SaveChanges();
+                }
+                catch (Exception ex){ MessageBox.Show(ex.Message, "Ошибка записи в историю", MessageBoxButton.OK, MessageBoxImage.Information); }
+                
                 ManageClass.getFrame.Navigate(new ProfilePage(admins));
             }
             else

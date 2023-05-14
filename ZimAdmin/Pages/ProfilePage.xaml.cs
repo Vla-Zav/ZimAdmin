@@ -43,5 +43,10 @@ namespace ZimAdmin.Pages
                 DataContext = currentAdmin;
             }
         }
+
+        private void btnAuthHistory_Click(object sender, RoutedEventArgs e)
+        {
+            ManageClass.getFrame.Navigate(new AuthHistoryPage());
+        }
     }
 }

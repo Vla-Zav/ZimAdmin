@@ -35,7 +35,7 @@
                 <xctk:DateTimePicker Name="dtpEditDateTime" Maximum="12/12/3032" Minimum="01/01/1900" Width="auto" Margin="10" FormatString="dd.MM.yyyy HH:mm" Format="FullDateTime" DefaultValue="01/01/2023 14:00:00"/>
             </StackPanel>
         </StackPanel>
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button x:Name="btnSave" Content="Сохранить изменения" Margin="15" Style="{StaticResource btnTemplate}" Click="btnSave_Click"/>
             <Button x:Name="btnBack" Content="Назад" Margin="15" Style="{StaticResource btnTemplate}" Click="btnBack_Click"/>
         </StackPanel>

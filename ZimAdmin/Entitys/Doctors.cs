@@ -33,6 +33,6 @@ namespace ZimAdmin.Entitys
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Conclusions> Conclusions { get; set; }
         public virtual Types_of_services Types_of_services { get; set; }
-        public virtual Work_Shift Work_Shift { get; set; }
+        public virtual Work_shift Work_shift { get; set; }
     }
 }

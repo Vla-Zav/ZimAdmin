@@ -46,7 +46,7 @@ namespace ZimAdmin.Pages
             DbSet<Types_of_services> typesServices = GetDbContext.GetContext().Types_of_services;
             DbSet<Appointments> appointments = GetDbContext.GetContext().Appointments;
             DbSet<Doctors> doctors = GetDbContext.GetContext().Doctors;
-            DbSet<Work_Shift> shifts = GetDbContext.GetContext().Work_Shift;
+            DbSet<Work_shift> shifts = GetDbContext.GetContext().Work_shift;
 
             List<Appointments> appointmentsList = appointments.ToList();
 
@@ -57,8 +57,8 @@ namespace ZimAdmin.Pages
                     {
                         foreach (var serv in typesServices)
                         {
-                            currentSeries.ChartType = SeriesChartType.Column;
-
+                            currentSeries.ChartType = SeriesChartType.Doughnut;
+                            
                             currentSeries.Points.AddXY(typesServices.Find(serv.id_Type).Name,
                                 appointments.Where(a => a.Doctors.Specialty == serv.id_Type).Count());
                         }
@@ -68,8 +68,8 @@ namespace ZimAdmin.Pages
                     {
                         foreach (var doc in doctors)
                         {
-                            currentSeries.ChartType = SeriesChartType.Column;
-
+                            currentSeries.ChartType = SeriesChartType.Pie;
+                            
                             currentSeries.Points.AddXY($"{doc.Last_Name} {doc.First_Name}",
                                 appointments.ToList().Where(a => a.id_Doctor == doc.id_Doctor).Sum(s => s.Doctors.Types_of_services.Cost));
                         }
@@ -81,7 +81,7 @@ namespace ZimAdmin.Pages
                         {
                             currentSeries.ChartType = SeriesChartType.Column;
 
-                            currentSeries.Points.AddXY(shift.id_Shift,
+                            currentSeries.Points.AddXY(shift.Number,
                                 doctors.ToList().Where(d => d.Shift == shift.id_Shift).Count());
                         }
                     }

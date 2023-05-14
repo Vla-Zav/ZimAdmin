@@ -32,6 +32,7 @@ namespace ZimAdmin.Entitys
         public virtual DbSet<Patients> Patients { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Types_of_services> Types_of_services { get; set; }
-        public virtual DbSet<Work_Shift> Work_Shift { get; set; }
+        public virtual DbSet<Authorization_history> Authorization_history { get; set; }
+        public virtual DbSet<Work_shift> Work_shift { get; set; }
     }
 }

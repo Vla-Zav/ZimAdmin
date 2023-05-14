@@ -31,7 +31,7 @@ namespace ZimAdmin.Pages
                 currentDoctor = selectedDoctor;
             DataContext = currentDoctor;
             cbSpecialty.ItemsSource = GetDbContext.GetContext().Types_of_services.ToList();
-            cbShift.ItemsSource = GetDbContext.GetContext().Work_Shift.ToList();
+            cbShift.ItemsSource = GetDbContext.GetContext().Work_shift.ToList();
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)

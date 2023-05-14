@@ -98,10 +98,16 @@
     <Compile Include="Classes\AnalyticsTypes.cs" />
     <Compile Include="Classes\GetDbContext.cs" />
     <Compile Include="Classes\ManageClass.cs" />
+    <Compile Include="Entitys\Authorization_history.cs">
+      <DependentUpon>ZimAdminModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entitys\Conclusions.cs">
       <DependentUpon>ZimAdminModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entitys\Doctors.cs">
+      <DependentUpon>ZimAdminModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entitys\Work_shift.cs">
       <DependentUpon>ZimAdminModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Pages\AddPages\AddAppointmentPage.xaml.cs">
@@ -121,6 +127,9 @@
     </Compile>
     <Compile Include="Pages\AppointmentsPage.xaml.cs">
       <DependentUpon>AppointmentsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AuthHistoryPage.xaml.cs">
+      <DependentUpon>AuthHistoryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\EditPages\ChangePasswordPage.xaml.cs">
       <DependentUpon>ChangePasswordPage.xaml</DependentUpon>
@@ -164,9 +173,6 @@
     <Compile Include="Entitys\Types_of_services.cs">
       <DependentUpon>ZimAdminModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entitys\Work_Shift.cs">
-      <DependentUpon>ZimAdminModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Entitys\ZimAdminModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -187,6 +193,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\AnalyticsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AuthHistoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

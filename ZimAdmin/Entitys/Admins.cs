@@ -14,6 +14,12 @@ namespace ZimAdmin.Entitys
     
     public partial class Admins
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Admins()
+        {
+            this.Authorization_history = new HashSet<Authorization_history>();
+        }
+    
         public int id_Admin { get; set; }
         public string Last_Name { get; set; }
         public string First_Name { get; set; }
@@ -21,5 +27,8 @@ namespace ZimAdmin.Entitys
         public string Login { get; set; }
         public string Password { get; set; }
         public byte[] image { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Authorization_history> Authorization_history { get; set; }
     }
 }

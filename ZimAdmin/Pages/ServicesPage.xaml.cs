@@ -45,7 +45,18 @@ namespace ZimAdmin.Pages
 
         private void btnDel_Click(object sender, RoutedEventArgs e)
         {
-
+            var delService = dgServices.SelectedItems.Cast<Types_of_services>().ToList();
+            if (MessageBox.Show("Вы уверены, что хотите удалить назначение?", "Уведомлние", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    GetDbContext.GetContext().Types_of_services.RemoveRange(delService);
+                    GetDbContext.GetContext().SaveChanges();
+                    dgServices.ItemsSource = GetDbContext.GetContext().Types_of_services.ToList();
+                }
+                catch (Exception ex)
+                { MessageBox.Show(ex.Message, "Ошибка базы данных", MessageBoxButton.OK, MessageBoxImage.Error); }
+            }
         }
 
         private void btnAddService_Click(object sender, RoutedEventArgs e)
