@@ -74,7 +74,7 @@ namespace ZimAdmin.Pages
                 }
                 catch (Exception ex){ MessageBox.Show(ex.Message, "Ошибка записи в историю", MessageBoxButton.OK, MessageBoxImage.Information); }
                 
-                ManageClass.getFrame.Navigate(new ProfilePage(admins));
+                ManageClass.getFrame.Navigate(new ProfilePage());
             }
             else
             {
