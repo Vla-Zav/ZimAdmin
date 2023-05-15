@@ -33,6 +33,16 @@ namespace ZimAdmin.Classes
         }
 
         /// <summary>
+        /// Метод блокирует возможность стирания данных из полоя
+        /// </summary>
+        /// <param name="e"></param>
+        public void backSpaceBlocker(KeyEventArgs e)
+        {
+            if (e.Key == Key.Back)
+                e.Handled = true;
+        }
+
+        /// <summary>
         /// Метод позволяет вводить только цифры
         /// </summary>
         /// <param name="e">Нажатая клавиша</param>

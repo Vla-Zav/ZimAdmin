@@ -13,6 +13,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
             <TextBlock Text="Аналитика" Style="{StaticResource tbTemplate}"/>
@@ -25,5 +26,8 @@
                 </chart:Chart.Legends>
             </chart:Chart>
         </WindowsFormsHost>
+        <StackPanel x:Name="exportPanel" Grid.Row="2" HorizontalAlignment="Right" Margin="0 10">
+            <Button x:Name="btnExport" Content="Экспорт" Style="{StaticResource btnTemplate}" Click="btnExport_Click"/>
+        </StackPanel>
     </Grid>
 </Page>

@@ -23,10 +23,10 @@ namespace ZimAdmin.Pages
     public partial class ProfilePage : Page
     {
         private Admins currentAdmin = new Admins();
-        public ProfilePage(Admins actualAdmin)
+        public ProfilePage()
         {
             InitializeComponent();
-            currentAdmin = actualAdmin;
+            currentAdmin = GetDbContext.GetContext().Admins.Find(AuthPage.admins.id_Admin);
             DataContext = currentAdmin;
         }
 
