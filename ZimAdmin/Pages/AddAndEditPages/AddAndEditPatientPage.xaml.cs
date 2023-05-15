@@ -81,5 +81,16 @@ namespace ZimAdmin.Pages
         {
             blocker.spaceBlocker(e);
         }
+
+        private void calBDPatient_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void calBDPatient_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            blocker.spaceBlocker(e);
+            blocker.backSpaceBlocker(e);
+        }
     }
 }

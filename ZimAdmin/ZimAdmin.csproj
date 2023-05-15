@@ -83,10 +83,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="Resources\App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
     <Compile Include="Classes\CharsBlocker.cs" />
     <Compile Include="Classes\LFMTemplate.cs" />
     <Compile Include="Entitys\Admins.cs">
@@ -188,6 +184,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ZimAdminModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
     <Page Include="Pages\AddPages\AddServicePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -204,10 +203,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Resources\App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Pages\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -275,6 +270,10 @@
     <Page Include="Pages\ServicesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -353,16 +352,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\MyPhoto\MyPhoto.jpg" />
-    <Resource Include="Resources\Icons\software-engineer.png" />
-    <Resource Include="Resources\Icons\appointment.png" />
-    <Resource Include="Resources\Icons\doctor.png" />
-    <Resource Include="Resources\Icons\patient.png" />
-    <Resource Include="Resources\Icons\profile.png" />
-    <Resource Include="Resources\Icons\heartbeat.png" />
-    <Resource Include="Resources\Icons\exit.png" />
-    <Resource Include="Resources\Icons\analytics.png" />
-    <Resource Include="Resources\Icons\service.png" />
     <Content Include="Entitys\ZimAdminModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ZimAdminModel.Context.cs</LastGenOutput>
@@ -377,6 +366,9 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\Icons\" />
+    <Folder Include="Resources\MyPhoto\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

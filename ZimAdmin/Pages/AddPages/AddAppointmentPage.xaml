@@ -43,7 +43,7 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <xctk:DateTimePicker Maximum="12/12/3032" Minimum="01/01/1900" Name="dtpAppointmentDate" Width="auto" Margin="10 0 0 10" FormatString="dd.MM.yyyy HH:mm" Format="FullDateTime"/>
+            <xctk:DateTimePicker Maximum="12/12/3032" Minimum="01/01/1900" Name="dtpAppointmentDate" Width="auto" Margin="10 0 0 10" FormatString="dd.MM.yyyy HH:mm" Format="FullDateTime" PreviewKeyDown="dtpAppointmentDate_PreviewKeyDown"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 10">
             <Button x:Name="btnSave" Content="Сохранить" Style="{StaticResource btnTemplate}" Click="btnSave_Click"/>
