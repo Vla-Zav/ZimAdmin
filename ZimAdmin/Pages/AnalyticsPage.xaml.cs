@@ -17,7 +17,6 @@ using System.Windows.Shapes;
 using Excel = Microsoft.Office.Interop.Excel;
 using ZimAdmin.Classes;
 using ZimAdmin.Entitys;
-using System.IO;
 
 namespace ZimAdmin.Pages
 {
@@ -63,6 +62,7 @@ namespace ZimAdmin.Pages
                             
                             currentSeries.Points.AddXY(typesServices.Find(serv.id_Type).Name,
                                 appointments.Where(a => a.Doctors.Specialty == serv.id_Type).Count());
+                            
                             exportPanel.Visibility = Visibility.Collapsed;
                         }
                     }
@@ -72,10 +72,10 @@ namespace ZimAdmin.Pages
                         foreach (var doc in doctors)
                         {
                             currentSeries.ChartType = SeriesChartType.Pie;
-                               
+                            
                             currentSeries.Points.AddXY($"{doc.Last_Name} {doc.First_Name}",
                                 appointments.ToList().Where(a => a.id_Doctor == doc.id_Doctor).Sum(s => s.Doctors.Types_of_services.Cost));
-                            
+                        
                             exportPanel.Visibility = Visibility.Visible;
                         }
                     }
@@ -88,6 +88,7 @@ namespace ZimAdmin.Pages
 
                             currentSeries.Points.AddXY(shift.Number,
                                 doctors.ToList().Where(d => d.Shift == shift.id_Shift).Count());
+                         
                             exportPanel.Visibility = Visibility.Collapsed;
                         }
                     }
@@ -95,6 +96,10 @@ namespace ZimAdmin.Pages
             }
         }
 
+        private void cbAnalytics_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedAnalytics();
+        }
 
         private void btnExport_Click(object sender, RoutedEventArgs e)
         {
@@ -140,7 +145,7 @@ namespace ZimAdmin.Pages
             cellCost.NumberFormat = "#,##0₽";
             cellCost.Formula = $"=SUM(F{rowsData - doctors.Count}:F{rowsData - 1})";
             sumCost.Font.Bold = worksheet.Cells[6][rowsData].Font.Bold = true;
-            
+
             Excel.Range borderRangeHeader = worksheet.Range[$"A1:F1"];
             borderRangeHeader.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
             borderRangeHeader.Borders.Weight = Excel.XlBorderWeight.xlThick;
@@ -154,10 +159,6 @@ namespace ZimAdmin.Pages
             applicationExcel.Visible = true;
 
             workbook.SaveAs($"Таблица доходов {DateTime.Now.ToShortDateString()}.xlsx");
-        }
-        private void cbAnalytics_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            selectedAnalytics();
         }
     }
 }

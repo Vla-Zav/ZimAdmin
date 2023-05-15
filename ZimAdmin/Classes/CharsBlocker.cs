@@ -31,15 +31,6 @@ namespace ZimAdmin.Classes
             if (e.Key == Key.Space)
                 e.Handled = true;
         }
-        /// <summary>
-        /// Метод блокирует возможность стирания данных из полоя
-        /// </summary>
-        /// <param name="e"></param>
-        public void backSpaceBlocker(KeyEventArgs e)
-        {
-            if(e.Key == Key.Back)
-                e.Handled = true;
-        }
 
         /// <summary>
         /// Метод блокирует возможность стирания данных из полоя

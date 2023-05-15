@@ -32,7 +32,7 @@
                 <TextBlock Text="{Binding Patients.Middle_Name}" Style="{StaticResource tbTemplate}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <xctk:DateTimePicker Text="{Binding DataTime_Appointment}" Name="dtpEditDateTime" Maximum="12/12/3032" Minimum="01/01/1900" Width="auto" Margin="10" FormatString="dd.MM.yyyy HH:mm" Format="FullDateTime" PreviewKeyDown="dtpEditDateTime_PreviewKeyDown"/>
+                <xctk:DateTimePicker Name="dtpEditDateTime" Maximum="12/12/3032" Minimum="01/01/1900" Width="auto" Margin="10" FormatString="dd.MM.yyyy HH:mm" Format="FullDateTime" DefaultValue="01/01/2023 14:00:00"/>
             </StackPanel>
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">

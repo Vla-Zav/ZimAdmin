@@ -37,7 +37,7 @@
                 </Menu.ItemsPanel>
                 <MenuItem x:Name="miProfile" Header="Профиль" Template="{StaticResource Menu_Template}" Click="miProfile_Click">
                     <MenuItem.Icon>
-                        <Image Source="/Resources/Icons/profile.png"/>
+                        <Image Source="/Resources/Icons/profile.png" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem x:Name="miDoctors" Header="Врачи" Template="{StaticResource Menu_Template}" Click="miDoctors_Click">
@@ -83,5 +83,6 @@
             </Menu>
         </StackPanel>
         <Frame Grid.Column="1" Name="mainFrame" NavigationUIVisibility="Hidden" ContentRendered="mainFrame_ContentRendered"/>
+        <Label Grid.Column="1" Content="Label" HorizontalAlignment="Left" Margin="870,-271,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

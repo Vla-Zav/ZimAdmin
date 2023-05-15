@@ -23,7 +23,7 @@ namespace ZimAdmin.Pages
     public partial class AddAppointmentPage : Page
     {
         private Appointments currentAppointment = new Appointments();
-        CharsBlocker blocker = new CharsBlocker();
+
         public AddAppointmentPage()
         {
             InitializeComponent();
@@ -97,13 +97,6 @@ namespace ZimAdmin.Pages
             else if(shift == 3 && dtpAppointmentDate.Value.Value.Hour > 19 || dtpAppointmentDate.Value.Value.Hour < 8)
                 return false;
             return true;
-        }
-
-        private void dtpAppointmentDate_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            blocker.spaceBlocker(e);
-            blocker.backSpaceBlocker(e);
-            e.Handled = true;
         }
     }
 }
