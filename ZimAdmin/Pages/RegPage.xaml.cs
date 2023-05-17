@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,14 +54,23 @@ namespace ZimAdmin.Pages
 
             try
             {
+                newAdmin.Password = pbPassword.Password;
                 GetDbContext.GetContext().Admins.Add(newAdmin);
                 GetDbContext.GetContext().SaveChanges();
                 MessageBox.Show("Регистрация прошла успешно", "Зарегистрирован", MessageBoxButton.OK, MessageBoxImage.Information);
                 ManageClass.getFrame.Navigate(new AuthPage());
             }
-            catch (Exception ex)
+            catch (DbEntityValidationException ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка базы данных!", MessageBoxButton.OK, MessageBoxImage.Error);
+                StringBuilder error = new StringBuilder();
+                foreach (var validationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        error.AppendLine($"Ошибка проверки: {validationError.ErrorMessage}");
+                    }
+                }
+                MessageBox.Show(error.ToString(), "Ошибка базы данных!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -71,12 +81,13 @@ namespace ZimAdmin.Pages
 
         private void onlyLetters_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            blocker.onlyLetters(e);
+            blocker.russianLetters(e);
         }
 
         private void specialCharsBlocker_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             blocker.specialCharsBlocker(e);
+            blocker.noRussianLetters(e);
         }
 
         private void spaceBlocker_PreviewKeyDown(object sender, KeyEventArgs e)

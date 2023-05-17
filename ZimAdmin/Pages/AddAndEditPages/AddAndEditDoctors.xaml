@@ -15,11 +15,11 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
             <TextBlock Style="{StaticResource tbTemplate}" HorizontalAlignment="Left" Margin="10 10 0 0" Text="Фамилия"/>
-            <TextBox x:Name="tbxDoctorLastName" Style="{StaticResource tbxTemplate}" HorizontalAlignment="Left" Margin="10 0 0 10" Text="{Binding Last_Name}" PreviewTextInput="onlyLetters_PreviewTextInput" PreviewKeyDown="spaceBlocker_PreviewKeyDown"/>
+            <TextBox x:Name="tbxDoctorLastName" Style="{StaticResource tbxTemplate}" HorizontalAlignment="Left" MaxLength="50" Margin="10 0 0 10" Text="{Binding Last_Name}" PreviewTextInput="onlyLetters_PreviewTextInput" PreviewKeyDown="spaceBlocker_PreviewKeyDown"/>
             <TextBlock Style="{StaticResource tbTemplate}" HorizontalAlignment="Left" Margin="10 10 0 0" Text="Имя"/>
-            <TextBox x:Name="tbxDoctorFirstName" Style="{StaticResource tbxTemplate}" HorizontalAlignment="Left" Margin="10 0 0 10" Text="{Binding First_Name}" PreviewTextInput="onlyLetters_PreviewTextInput" PreviewKeyDown="spaceBlocker_PreviewKeyDown"/>
+            <TextBox x:Name="tbxDoctorFirstName" Style="{StaticResource tbxTemplate}" HorizontalAlignment="Left" MaxLength="50" Margin="10 0 0 10" Text="{Binding First_Name}" PreviewTextInput="onlyLetters_PreviewTextInput" PreviewKeyDown="spaceBlocker_PreviewKeyDown"/>
             <TextBlock Style="{StaticResource tbTemplate}" HorizontalAlignment="Left" Margin="10 10 0 0" Text="Отчество"/>
-            <TextBox x:Name="tbxDoctorMiddleName" Style="{StaticResource tbxTemplate}" HorizontalAlignment="Left" Margin="10 0 0 10" Text="{Binding Middle_Name}" PreviewTextInput="onlyLetters_PreviewTextInput" PreviewKeyDown="spaceBlocker_PreviewKeyDown"/>
+            <TextBox x:Name="tbxDoctorMiddleName" Style="{StaticResource tbxTemplate}" HorizontalAlignment="Left" MaxLength="50" Margin="10 0 0 10" Text="{Binding Middle_Name}" PreviewTextInput="onlyLetters_PreviewTextInput" PreviewKeyDown="spaceBlocker_PreviewKeyDown"/>
             <TextBlock Style="{StaticResource tbTemplate}" HorizontalAlignment="Left" Margin="10 10 0 0" Text="Специальность"/>
             <ComboBox x:Name="cbSpecialty" DisplayMemberPath="Name" Margin="10 0 0 10" SelectedItem="{Binding Types_of_services}"/>
             <TextBlock Style="{StaticResource tbTemplate}" HorizontalAlignment="Left" Margin="10 10 0 0" Text="Смена"/>

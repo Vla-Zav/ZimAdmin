@@ -16,11 +16,11 @@
         <StackPanel HorizontalAlignment="Left">
             <StackPanel Margin="10">
                 <TextBlock HorizontalAlignment="Left" Text="Название услуги" Style="{StaticResource tbTemplate}"/>
-                <TextBox x:Name="tbxNewService" Text="{Binding Name}" Height="29" Style="{StaticResource tbxTemplate}" PreviewTextInput="specialCharsBlocker_PreviewTextInput"/>
+                <TextBox x:Name="tbxNewService" Text="{Binding Name}" Height="29" MaxLength="20" Style="{StaticResource tbxTemplate}" PreviewTextInput="specialCharsBlocker_PreviewTextInput"/>
             </StackPanel>
             <StackPanel Margin="10" Orientation="Horizontal">
                 <TextBlock Text="Стоимость:" Style="{StaticResource tbTemplate}"/>
-                <TextBox x:Name="tbxCostService" Width="auto" Text="{Binding Cost}" MinWidth="162.5" Style="{StaticResource tbxTemplate}" PreviewTextInput="onlyNumbers_PreviewTextInput" PreviewKeyDown="spaceAndZeroBlocker_PreviewKeyDown"/>
+                <TextBox x:Name="tbxCostService" Width="auto" Text="{Binding Cost}" MinWidth="162.5" MaxLength="7" Style="{StaticResource tbxTemplate}" PreviewTextInput="onlyNumbers_PreviewTextInput" PreviewKeyDown="spaceAndZeroBlocker_PreviewKeyDown"/>
             </StackPanel>
         </StackPanel>
         <StackPanel Margin="0 10" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="1">

@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <StackPanel Margin="10">
             <TextBlock Text="Приёмы" HorizontalAlignment="Left" Style="{StaticResource tbTemplate}"/>
-            <DataGrid x:Name="dgAppointments" IsReadOnly="True" ColumnWidth="*" AutoGenerateColumns="False" CanUserResizeRows="False">
+            <DataGrid CanUserSortColumns="False" x:Name="dgAppointments" IsReadOnly="True" ColumnWidth="*" AutoGenerateColumns="False" CanUserResizeRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Доктор" Binding="{Binding Doctors.Last_Name}"/>
                     <DataGridTextColumn Header="Пациент" Binding="{Binding Patients.Last_Name}"/>

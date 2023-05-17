@@ -23,7 +23,7 @@
             </StackPanel>
             <Grid>
                 <TextBlock x:Name="tbNotFound" Text="Ничего не найдено" Visibility="Collapsed" Style="{StaticResource tbTemplate}"/>
-                <DataGrid x:Name="dgPatients" AutoGenerateColumns="False" IsReadOnly="True" CanUserResizeRows="False">
+                <DataGrid CanUserSortColumns="False" x:Name="dgPatients" AutoGenerateColumns="False" IsReadOnly="True" CanUserResizeRows="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Фамилия" Binding="{Binding Last_Name}"/>
                         <DataGridTextColumn Header="Имя" Binding="{Binding First_Name}"/>

@@ -77,5 +77,10 @@ namespace ZimAdmin.Pages
                 return false;
             return true;
         }
+
+        private void dtpEditDateTime_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -75,18 +76,22 @@ namespace ZimAdmin.Pages
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
+            DataContext = currentAdmin = ManageClass.getFrame.BackStack as Admins;
             ManageClass.getFrame.GoBack();
         }
 
         private void specialCharsBlocker_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             blocker.specialCharsBlocker(e);
+            blocker.noRussianLetters(e);
         }
 
         private void onlyLetters_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             blocker.onlyLetters(e);
+            blocker.russianLetters(e);
         }
+
         private void spaceBlocker_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             blocker.spaceBlocker(e);

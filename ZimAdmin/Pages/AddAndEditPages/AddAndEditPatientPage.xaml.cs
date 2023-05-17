@@ -74,12 +74,17 @@ namespace ZimAdmin.Pages
 
         private void onlyLetters_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            blocker.onlyLetters(e);
+            blocker.russianLetters(e);
         }
 
         private void spaceBlocker_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             blocker.spaceBlocker(e);
+        }
+
+        private void calBDPatient_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }

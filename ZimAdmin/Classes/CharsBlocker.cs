@@ -73,5 +73,33 @@ namespace ZimAdmin.Classes
                     e.Handled = true;
             }catch { }
         }
+
+        /// <summary>
+        /// Метод позволяет вводить только русские буквы
+        /// </summary>
+        /// <param name="e"></param>
+        public void russianLetters(TextCompositionEventArgs e)
+        {
+            try
+            {
+                if(!Regex.Match(e.Text,@"[А-я]").Success)
+                    e.Handled = true;
+            }
+            catch { }
+        }
+
+        /// <summary>
+        /// Метод позволяет вводить только русские буквы
+        /// </summary>
+        /// <param name="e"></param>
+        public void noRussianLetters(TextCompositionEventArgs e)
+        {
+            try
+            {
+                if (Regex.Match(e.Text, @"[А-я]").Success)
+                    e.Handled = true;
+            }
+            catch { }
+        }
     }
 }

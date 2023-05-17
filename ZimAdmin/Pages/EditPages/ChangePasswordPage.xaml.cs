@@ -63,6 +63,7 @@ namespace ZimAdmin.Pages
         private void specialCharsBlocker_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             blocker.specialCharsBlocker(e);
+            blocker.noRussianLetters(e);
         }
         private void spaceBlocker_PreviewKeyDown(object sender, KeyEventArgs e)
         {

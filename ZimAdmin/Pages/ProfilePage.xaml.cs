@@ -22,11 +22,11 @@ namespace ZimAdmin.Pages
     /// </summary>
     public partial class ProfilePage : Page
     {
-        private Admins currentAdmin = new Admins();
+        private Admins currentAdmin = GetDbContext.GetContext().Admins.Find(AuthPage.admins.id_Admin);
         public ProfilePage()
         {
             InitializeComponent();
-            currentAdmin = GetDbContext.GetContext().Admins.Find(AuthPage.admins.id_Admin);
+            GetDbContext.GetContext().ChangeTracker.Entries().ToList().ForEach(entry => entry.Reload());
             DataContext = currentAdmin;
         }
 
@@ -35,18 +35,14 @@ namespace ZimAdmin.Pages
             ManageClass.getFrame.Navigate(new EditProfilePage());
         }
 
-        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            if (Visibility == Visibility.Visible)
-            {
-                GetDbContext.GetContext().ChangeTracker.Entries().ToList().ForEach(entry => entry.Reload());
-                DataContext = currentAdmin;
-            }
-        }
-
         private void btnAuthHistory_Click(object sender, RoutedEventArgs e)
         {
             ManageClass.getFrame.Navigate(new AuthHistoryPage());
+        }
+
+        public static void relode()
+        {
+            GetDbContext.GetContext().ChangeTracker.Entries().ToList().ForEach(entry => entry.Reload());
         }
     }
 }

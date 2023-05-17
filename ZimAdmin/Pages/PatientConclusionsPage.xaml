@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <StackPanel Margin="10">
             <TextBlock Text="Заключения" Style="{StaticResource tbTemplate}" HorizontalAlignment="Left"/>
-            <DataGrid x:Name="dgCounclusion" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*">
+            <DataGrid CanUserSortColumns="False" x:Name="dgCounclusion" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Доктор" Binding="{Binding Doctors.Last_Name}"/>
                     <DataGridTemplateColumn Header="Жалобы">

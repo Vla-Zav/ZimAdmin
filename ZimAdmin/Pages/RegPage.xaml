@@ -37,7 +37,7 @@
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5">
             <TextBlock Text="Пароль" Style="{StaticResource tbTemplate}"/>
-            <PasswordBox x:Name="pbPassword" DataContext="{Binding Password}" Style="{StaticResource passAuth}" PreviewTextInput="specialCharsBlocker_PreviewTextInput" PreviewKeyDown="spaceBlocker_PreviewKeyDown"/>
+            <PasswordBox x:Name="pbPassword" Style="{StaticResource passAuth}" PreviewTextInput="specialCharsBlocker_PreviewTextInput" PreviewKeyDown="spaceBlocker_PreviewKeyDown"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="6">
             <Button Name="btnReg" Content="Зарегистрироваться" Style="{StaticResource btnTemplate}" Click="btnReg_Click"/>

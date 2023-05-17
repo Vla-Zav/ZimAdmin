@@ -89,15 +89,15 @@
     </ApplicationDefinition>
     <Compile Include="Classes\CharsBlocker.cs" />
     <Compile Include="Classes\LFMTemplate.cs" />
+    <Compile Include="Classes\AnalyticsTypes.cs" />
+    <Compile Include="Classes\GetDbContext.cs" />
+    <Compile Include="Classes\ManageClass.cs" />
     <Compile Include="Entitys\Admins.cs">
       <DependentUpon>ZimAdminModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entitys\Appointments.cs">
       <DependentUpon>ZimAdminModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Classes\AnalyticsTypes.cs" />
-    <Compile Include="Classes\GetDbContext.cs" />
-    <Compile Include="Classes\ManageClass.cs" />
     <Compile Include="Entitys\Authorization_history.cs">
       <DependentUpon>ZimAdminModel.tt</DependentUpon>
     </Compile>
@@ -107,8 +107,32 @@
     <Compile Include="Entitys\Doctors.cs">
       <DependentUpon>ZimAdminModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entitys\Patients.cs">
+      <DependentUpon>ZimAdminModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entitys\sysdiagrams.cs">
+      <DependentUpon>ZimAdminModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entitys\Types_of_services.cs">
+      <DependentUpon>ZimAdminModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entitys\Work_shift.cs">
       <DependentUpon>ZimAdminModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entitys\ZimAdminModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZimAdminModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entitys\ZimAdminModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZimAdminModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entitys\ZimAdminModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZimAdminModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Pages\AddPages\AddAppointmentPage.xaml.cs">
       <DependentUpon>AddAppointmentPage.xaml</DependentUpon>
@@ -163,30 +187,6 @@
     </Compile>
     <Compile Include="Pages\ServicesPage.xaml.cs">
       <DependentUpon>ServicesPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Entitys\Patients.cs">
-      <DependentUpon>ZimAdminModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entitys\sysdiagrams.cs">
-      <DependentUpon>ZimAdminModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entitys\Types_of_services.cs">
-      <DependentUpon>ZimAdminModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entitys\ZimAdminModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ZimAdminModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entitys\ZimAdminModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ZimAdminModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entitys\ZimAdminModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ZimAdminModel.edmx</DependentUpon>
     </Compile>
     <Page Include="Pages\AddPages\AddServicePage.xaml">
       <SubType>Designer</SubType>
@@ -298,17 +298,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
     <EntityDeploy Include="Entitys\ZimAdminModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ZimAdminModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="Entitys\ZimAdminModel.edmx.diagram">
       <DependentUpon>ZimAdminModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -363,10 +363,16 @@
     <Resource Include="Resources\Icons\exit.png" />
     <Resource Include="Resources\Icons\analytics.png" />
     <Resource Include="Resources\Icons\service.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
     <Content Include="Entitys\ZimAdminModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ZimAdminModel.Context.cs</LastGenOutput>
       <DependentUpon>ZimAdminModel.edmx</DependentUpon>
+      <LastGenOutput>ZimAdminModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Entitys\ZimAdminModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -374,9 +380,5 @@
       <LastGenOutput>ZimAdminModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

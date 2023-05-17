@@ -18,11 +18,11 @@
         <TextBlock Text="Авторизация" Style="{StaticResource tbTemplate}"/>
         <StackPanel VerticalAlignment="Center" Grid.Row="1">
             <TextBlock Text="Логин" Style="{StaticResource tbTemplate}"/>
-            <TextBox x:Name="tbxLogin" Style="{StaticResource tbxTemplate}" PreviewTextInput="specialCharsBlocker_PreviewTextInput" PreviewKeyDown="spaceBlocker_PreviewKeyDown"/>
+            <TextBox x:Name="tbxLogin" MaxLength="20" Style="{StaticResource tbxTemplate}" PreviewTextInput="specialCharsBlocker_PreviewTextInput" PreviewKeyDown="spaceBlocker_PreviewKeyDown"/>
         </StackPanel>
         <StackPanel Grid.Row="2" VerticalAlignment="Center">
             <TextBlock Text="Пароль" Style="{StaticResource tbTemplate}"/>
-            <PasswordBox x:Name="passBox" Style="{StaticResource passAuth}" PreviewTextInput="specialCharsBlocker_PreviewTextInput" PreviewKeyDown="spaceBlocker_PreviewKeyDown"/>
+            <PasswordBox x:Name="passBox" MaxLength="30" Style="{StaticResource passAuth}" PreviewTextInput="specialCharsBlocker_PreviewTextInput" PreviewKeyDown="spaceBlocker_PreviewKeyDown"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button x:Name="btnTemplate" Style="{StaticResource btnTemplate}" Content="Войти" Click="btnTemplate_Click"/>
