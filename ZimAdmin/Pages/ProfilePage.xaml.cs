@@ -26,7 +26,6 @@ namespace ZimAdmin.Pages
         public ProfilePage()
         {
             InitializeComponent();
-            GetDbContext.GetContext().ChangeTracker.Entries().ToList().ForEach(entry => entry.Reload());
             DataContext = currentAdmin;
         }
 
@@ -38,11 +37,6 @@ namespace ZimAdmin.Pages
         private void btnAuthHistory_Click(object sender, RoutedEventArgs e)
         {
             ManageClass.getFrame.Navigate(new AuthHistoryPage());
-        }
-
-        public static void relode()
-        {
-            GetDbContext.GetContext().ChangeTracker.Entries().ToList().ForEach(entry => entry.Reload());
         }
     }
 }

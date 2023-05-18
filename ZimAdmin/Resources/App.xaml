@@ -9,49 +9,91 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="FontFamily" Value="Consolas"/>
-            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="FontSize" Value="30"/>
             <Setter Property="Foreground" Value="#2E333a"/>
         </Style>
+        
         <Style TargetType="TextBox" x:Key="tbxTemplate">
+            <Setter Property="Padding" Value="10 0"/>
             <Setter Property="Width" Value="300"/>
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontSize" Value="30"/>
             <Setter Property="Background" Value="#2E333a"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="FontFamily" Value="Consolas"/>
         </Style>
+        
         <Style TargetType="PasswordBox" x:Key="passAuth">
             <Setter Property="Width" Value="300"/>
-            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="30"/>
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Background" Value="#2E333a"/>
+            <Setter Property="Padding" Value="10 0"/>
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="PasswordChar" Value="#"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border CornerRadius="5" x:Name="Bd" Background="#2E333a" OpacityMask="{x:Null}">
+                            <ScrollViewer SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" x:Name="PART_ContentHost"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="Bd" Value="#2E333a"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
+        
+        <Style TargetType="Border">
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        
         <Style TargetType="Button" x:Key="btnTemplate">
             <Setter Property="Margin" Value="30 0"/>
-            <Setter Property="Height" Value="40"/>
-            <Setter Property="Width" Value="210"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="280"/>
             <Setter Property="FontFamily" Value="Consolas"/>
-            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontSize" Value="25"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Padding" Value="5"/>
             <Setter Property="Background" Value="#6495ED"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF2575A1"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
-        
         <Style TargetType="DataGrid">
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="RowHeaderWidth" Value="0"/>
-            <Setter Property="Height" Value="600"/>
+            <Setter Property="MaxHeight" Value="585"/>
+            <Setter Property="Height" Value="auto"/>
             <Setter Property="Background" Value="White"/>
             <Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
         </Style>
+        
         <Style TargetType="DataGridCell">
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="Padding" Value="10"/>
         </Style>
+        
         <Style TargetType="DataGridColumnHeader">
             <Setter Property="Background" Value="#6495ED"/>
             <Setter Property="FontFamily" Value="Consolas"/>
@@ -61,6 +103,7 @@
             <Setter Property="BorderBrush" Value="Black"/>
             <Setter Property="Padding" Value="5"/>
         </Style>
+        
         <Style x:Key="EditButton" TargetType="Button">
             <Setter Property="Background" Value="#6495ED"/>
             <Setter Property="Foreground" Value="White"/>
@@ -74,16 +117,32 @@
             <Setter Property="Width" Value="auto"/>
             <Setter Property="MinWidth" Value="200"/>
             <Setter Property="FontFamily" Value="Consolas"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Background" Value="#F5F5DC"/>
-        </Style>
-        <Style TargetType="ComboBoxItem">
-            <Setter Property="FontFamily" Value="Consolas"/>
-            <Setter Property="FontSize" Value="15"/>
-            <Setter Property="Background" Value="#F5F5DC"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="Background" Value="#6495ED"/>
         </Style>
 
-        <!-- Шаблон меню навигации -->
+        <Style TargetType="ComboBoxItem">
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="Background" Value="#6495ED"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                        <Border x:Name="gd" Background="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ComboBox}},Path=Background}">
+                            <ContentPresenter />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="ComboBoxItem.IsMouseOver" Value="True">
+                                <Setter TargetName="gd"  Property="Background" Value="#FF2575A1"></Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <ControlTemplate x:Key="Menu_Template"
                      TargetType="{x:Type MenuItem}">
 

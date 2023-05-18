@@ -18,7 +18,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Регистрация" Style="{StaticResource tbTemplate}"/>
+        <TextBlock Text="Регистрация" Margin="0 15" Style="{StaticResource tbTemplate}"/>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
             <TextBlock Text="Фамилия" Style="{StaticResource tbTemplate}"/>
             <TextBox x:Name="tbxLName" Text="{Binding Last_Name}" Style="{StaticResource tbxTemplate}" PreviewTextInput="onlyLetters_PreviewTextInput" PreviewKeyDown="spaceBlocker_PreviewKeyDown"/>

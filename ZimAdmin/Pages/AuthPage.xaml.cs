@@ -35,9 +35,7 @@ namespace ZimAdmin.Pages
             history = new Authorization_history();
         }
 
-
-
-        private void btnTemplate_Click(object sender, RoutedEventArgs e)
+        private void btnEnter_Click(object sender, RoutedEventArgs e)
         {
             isAuth(tbxLogin.Text, passBox.Password);
         }
@@ -96,6 +94,12 @@ namespace ZimAdmin.Pages
         private void spaceBlocker_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             blocker.spaceBlocker(e);
+        }
+
+        private void passBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                btnEnter_Click(sender, e);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,10 +26,12 @@ namespace ZimAdmin.Pages
     {
         CharsBlocker blocker = new CharsBlocker();
         private Admins currentAdmin = new Admins();
+        private Admins originalAdmin = null;
         public EditProfilePage()
         {
             InitializeComponent();
             currentAdmin = GetDbContext.GetContext().Admins.Find(AuthPage.admins.id_Admin);
+            originalAdmin = CloneAdmin(currentAdmin);
             DataContext = currentAdmin;
         }
 
@@ -73,12 +76,27 @@ namespace ZimAdmin.Pages
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = currentAdmin = ManageClass.getFrame.BackStack as Admins;
+            currentAdmin = CloneAdmin(originalAdmin);
+            DataContext = currentAdmin;
+            GetDbContext.GetContext().ChangeTracker.Entries().ToList().ForEach(entire => entire.Reload());
             ManageClass.getFrame.GoBack();
         }
+
+        private Admins CloneAdmin(Admins admin)
+        {
+            // Создаем копию сущности Admins
+            return new Admins
+            {
+                Last_Name = admin.Last_Name,
+                First_Name = admin.First_Name,
+                Middle_Name = admin.Middle_Name,
+                Login = admin.Login,
+                Password = admin.Password
+            };
+        }
+
 
         private void specialCharsBlocker_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {

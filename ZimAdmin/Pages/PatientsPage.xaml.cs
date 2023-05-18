@@ -48,6 +48,7 @@ namespace ZimAdmin.Pages
         {
             if (Visibility == Visibility.Visible)
             {
+                tbxSearchLName.Text = null;
                 GetDbContext.GetContext().ChangeTracker.Entries().ToList().ForEach(entry => entry.Reload());
                 dgPatients.ItemsSource = GetDbContext.GetContext().Patients.ToList();
             }

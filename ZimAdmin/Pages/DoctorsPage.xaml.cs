@@ -59,6 +59,8 @@ namespace ZimAdmin.Pages
         {
             if (Visibility == Visibility.Visible)
             {
+                cbShift.SelectedIndex = 0;
+                cbSpecialty.SelectedIndex = 0;
                 GetDbContext.GetContext().ChangeTracker.Entries().ToList().ForEach(entry => entry.Reload());
                 dgDoctors.ItemsSource = GetDbContext.GetContext().Doctors.ToList();
             }

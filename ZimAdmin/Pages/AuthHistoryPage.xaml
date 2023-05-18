@@ -14,7 +14,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <StackPanel Margin="10">
-            <TextBlock Text="История авторизаций" HorizontalAlignment="Left" Style="{StaticResource tbTemplate}"/>
+            <TextBlock Text="История авторизаций" Margin="0 0 0 15" Style="{StaticResource tbTemplate}"/>
             <Grid>
                 <TextBlock x:Name="tbNotFound" Text="Здесь пока ничего нет" Visibility="Collapsed" Style="{StaticResource tbTemplate}"/>
                 <DataGrid CanUserSortColumns="False" CanUserResizeRows="False" AutoGenerateColumns="False" CanUserResizeColumns="False" IsReadOnly="True" ColumnWidth="*" x:Name="dgAuthHistory">

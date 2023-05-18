@@ -14,7 +14,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <StackPanel Margin="10">
-            <TextBlock Text="Врачи" HorizontalAlignment="Left" Style="{StaticResource tbTemplate}"/>
+            <TextBlock Text="Врачи" Margin="0 0 0 15" Style="{StaticResource tbTemplate}"/>
 
             <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
                 <TextBlock Text="Специальность:" Style="{StaticResource tbTemplate}"/>
@@ -23,7 +23,7 @@
                 <ComboBox x:Name="cbShift" DisplayMemberPath="Number" SelectionChanged="search_SelectionChanged"/>
             </StackPanel>
             <Grid>
-                <DataGrid CanUserSortColumns="False" Grid.Row="0" Name="dgDoctors" CanUserResizeRows="False"
+                <DataGrid Grid.Row="0" Name="dgDoctors" CanUserResizeRows="False"
                               AutoGenerateColumns="False" IsReadOnly="True">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Фамилия" Binding="{Binding Last_Name}"/>

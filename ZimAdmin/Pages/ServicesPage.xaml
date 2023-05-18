@@ -14,7 +14,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <StackPanel Margin="10">
-            <TextBlock Text="Услцги" Style="{StaticResource tbTemplate}" HorizontalAlignment="Left"/>
+            <TextBlock Text="Услуги" Style="{StaticResource tbTemplate}" Margin="0 0 0 15"/>
             <DataGrid x:Name="dgServices" AutoGenerateColumns="False" IsReadOnly="True" CanUserResizeRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Наименование" Width="*" Binding="{Binding Name}"/>

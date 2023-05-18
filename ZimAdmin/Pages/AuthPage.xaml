@@ -13,19 +13,22 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Авторизация" Style="{StaticResource tbTemplate}"/>
+                <Image Width="50"  Source="/Resources/Icons/heartbeat.png" Margin="273,-20,477,20"/>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Margin="30" Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource tbTemplate}" Text="ZimAdim"/>
+            </StackPanel>
+            <TextBlock Text="Авторизация" Style="{StaticResource tbTemplate}"/>
+        </StackPanel>
         <StackPanel VerticalAlignment="Center" Grid.Row="1">
             <TextBlock Text="Логин" Style="{StaticResource tbTemplate}"/>
             <TextBox x:Name="tbxLogin" MaxLength="20" Style="{StaticResource tbxTemplate}" PreviewTextInput="specialCharsBlocker_PreviewTextInput" PreviewKeyDown="spaceBlocker_PreviewKeyDown"/>
-        </StackPanel>
-        <StackPanel Grid.Row="2" VerticalAlignment="Center">
             <TextBlock Text="Пароль" Style="{StaticResource tbTemplate}"/>
-            <PasswordBox x:Name="passBox" MaxLength="30" Style="{StaticResource passAuth}" PreviewTextInput="specialCharsBlocker_PreviewTextInput" PreviewKeyDown="spaceBlocker_PreviewKeyDown"/>
+            <PasswordBox x:Name="passBox" MaxLength="30" Style="{StaticResource passAuth}" PreviewTextInput="specialCharsBlocker_PreviewTextInput" PreviewKeyDown="spaceBlocker_PreviewKeyDown" KeyDown="passBox_KeyDown"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="btnTemplate" Style="{StaticResource btnTemplate}" Content="Войти" Click="btnTemplate_Click"/>
+            <Button x:Name="btnEnter" Style="{StaticResource btnTemplate}" Content="Войти" Click="btnEnter_Click"/>
             <Button x:Name="btnReg" Style="{StaticResource btnTemplate}"  Content="Зарегистрироваться" Click="btnReg_Click"/>
         </StackPanel>
     </Grid>
