@@ -26,7 +26,6 @@ namespace ZimAdmin.Entitys
         public string Middle_Name { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-        public byte[] image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Authorization_history> Authorization_history { get; set; }

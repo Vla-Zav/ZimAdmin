@@ -15,7 +15,6 @@
           <Property Name="Middle_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="image" Type="image" />
         </EntityType>
         <EntityType Name="Appointments">
           <Key>
@@ -234,7 +233,6 @@
           <Property Name="Middle_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Authorization_history" Relationship="Privat_HospitalModel.FK_Authorization_history_Admins" FromRole="Admins" ToRole="Authorization_history" />
         </EntityType>
         <EntityType Name="Appointments">
@@ -468,7 +466,6 @@
                 <ScalarProperty Name="Middle_Name" ColumnName="Middle_Name" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="image" ColumnName="image" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
