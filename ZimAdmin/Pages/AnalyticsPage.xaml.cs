@@ -39,7 +39,7 @@ namespace ZimAdmin.Pages
 
             cbAnalytics.SelectedIndex = 0;
         }
-        private void selectedAnalytics()
+        private void SelectedAnalytics()
         {
             Series currentSeries = chartsServices.Series.FirstOrDefault();
             currentSeries.Points.Clear();
@@ -84,7 +84,7 @@ namespace ZimAdmin.Pages
                     {
                         foreach (var shift in shifts)
                         {
-                            currentSeries.ChartType = SeriesChartType.Column;
+                            currentSeries.ChartType = SeriesChartType.StackedColumn;
 
                             currentSeries.Points.AddXY(shift.Number,
                                 doctors.ToList().Where(d => d.Shift == shift.id_Shift).Count());
@@ -98,7 +98,7 @@ namespace ZimAdmin.Pages
 
         private void cbAnalytics_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            selectedAnalytics();
+            SelectedAnalytics();
         }
 
         private void btnExport_Click(object sender, RoutedEventArgs e)

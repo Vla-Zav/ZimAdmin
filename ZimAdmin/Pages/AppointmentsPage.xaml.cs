@@ -25,7 +25,6 @@ namespace ZimAdmin.Pages
         public AppointmentsPage()
         {
             InitializeComponent();
-            dgAppointments.ItemsSource = GetDbContext.GetContext().Appointments.ToList();
         }
 
         private void btnAddAppointment_Click(object sender, RoutedEventArgs e)
@@ -37,8 +36,8 @@ namespace ZimAdmin.Pages
         {
             if (Visibility == Visibility.Visible)
             {
+                HasData();
                 GetDbContext.GetContext().ChangeTracker.Entries().ToList().ForEach(entry => entry.Reload());
-                dgAppointments.ItemsSource = GetDbContext.GetContext().Appointments.ToList();
             }
         }
 
@@ -60,6 +59,20 @@ namespace ZimAdmin.Pages
                 }
                 catch (Exception ex)
                 { MessageBox.Show(ex.Message, "Ошибка базы данных", MessageBoxButton.OK, MessageBoxImage.Error); }
+            }
+        }
+        private void HasData()
+        {
+            dgAppointments.ItemsSource = GetDbContext.GetContext().Appointments.ToList();
+            if (dgAppointments.Items.Count == 0)
+            {
+                dgAppointments.Visibility = Visibility.Collapsed;
+                tbNotFound.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                dgAppointments.Visibility = Visibility.Visible;
+                tbNotFound.Visibility = Visibility.Collapsed;
             }
         }
     }

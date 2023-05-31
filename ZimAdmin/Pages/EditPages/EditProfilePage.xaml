@@ -5,25 +5,28 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZimAdmin.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="760" d:DesignWidth="1000"
       Title="EditProfilePage">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
         <StackPanel>
-            <TextBlock Style="{StaticResource tbTemplate}"  Margin="10 10 0 0" Text="Фамилия"/>
-            <TextBox x:Name="tbxAdminLastName" Style="{StaticResource tbxTemplate}" MaxLength="50"  Margin="10 0 0 10" Text="{Binding Last_Name}" PreviewTextInput="onlyLetters_PreviewTextInput" PreviewKeyDown="spaceBlocker_PreviewKeyDown"/>
-            <TextBlock Style="{StaticResource tbTemplate}"  Margin="10 10 0 0" Text="Имя"/>
-            <TextBox x:Name="tbxAdminFirstName" Style="{StaticResource tbxTemplate}" MaxLength="50"  Margin="10 0 0 10" Text="{Binding First_Name}" PreviewTextInput="onlyLetters_PreviewTextInput" PreviewKeyDown="spaceBlocker_PreviewKeyDown"/>
-            <TextBlock Style="{StaticResource tbTemplate}"  Margin="10 10 0 0" Text="Отчество"/>
-            <TextBox x:Name="tbxAdminMiddleName" Style="{StaticResource tbxTemplate}" MaxLength="50"  Margin="10 0 0 10" Text="{Binding Middle_Name}" PreviewTextInput="onlyLetters_PreviewTextInput" PreviewKeyDown="spaceBlocker_PreviewKeyDown"/>
-            <TextBlock Style="{StaticResource tbTemplate}"  Margin="10 10 0 0" Text="Логин"/>
-            <TextBox x:Name="tbxAdminLogin" Style="{StaticResource tbxTemplate}" MaxLength="20"  Margin="10 0 0 10" Text="{Binding Login}" PreviewTextInput="specialCharsBlocker_PreviewTextInput" PreviewKeyDown="spaceBlocker_PreviewKeyDown"/>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="btnSaveChanges" Content="Сохранить изменения" Style="{StaticResource btnTemplate}"  Click="btnSaveChanges_Click"/>
-                <Button x:Name="btnChangePassword" Content="Изменить пароль" Style="{StaticResource btnTemplate}"  Click="btnChangePassword_Click"/>
-                <Button x:Name="btnBack" Content="Назад" Style="{StaticResource btnTemplate}" Click="btnBack_Click" />
-            </StackPanel>
+            <TextBlock Style="{StaticResource tbTemplate}"  Margin="0 50 0 10" Text="Фамилия"/>
+            <TextBox x:Name="tbxAdminLastName" Style="{StaticResource tbxTemplate}" MaxLength="50"  Text="{Binding Last_Name}" PreviewTextInput="onlyLetters_PreviewTextInput" PreviewKeyDown="spaceBlocker_PreviewKeyDown"/>
+            <TextBlock Style="{StaticResource tbTemplate}"  Margin="0 50 0 10" Text="Имя"/>
+            <TextBox x:Name="tbxAdminFirstName" Style="{StaticResource tbxTemplate}" MaxLength="50" Text="{Binding First_Name}" PreviewTextInput="onlyLetters_PreviewTextInput" PreviewKeyDown="spaceBlocker_PreviewKeyDown"/>
+            <TextBlock Style="{StaticResource tbTemplate}"  Margin="0 50 0 10" Text="Отчество"/>
+            <TextBox x:Name="tbxAdminMiddleName" Style="{StaticResource tbxTemplate}" MaxLength="50" Text="{Binding Middle_Name}" PreviewTextInput="onlyLetters_PreviewTextInput" PreviewKeyDown="spaceBlocker_PreviewKeyDown"/>
+            <TextBlock Style="{StaticResource tbTemplate}"  Margin="0 50 0 10" Text="Логин"/>
+            <TextBox x:Name="tbxAdminLogin" Style="{StaticResource tbxTemplate}" MaxLength="20" Text="{Binding Login}" PreviewTextInput="specialCharsBlocker_PreviewTextInput" PreviewKeyDown="spaceBlocker_PreviewKeyDown"/>
         </StackPanel>
-        <!--<TextBlock Text="На разработке" Style="{StaticResource tbTemplate}"/>-->
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="0 10" Orientation="Horizontal">
+            <Button x:Name="btnSaveChanges" Content="Сохранить изменения" Style="{StaticResource btnTemplate}"  Click="btnSaveChanges_Click"/>
+            <Button x:Name="btnChangePassword" Content="Изменить пароль" Style="{StaticResource btnTemplate}"  Click="btnChangePassword_Click"/>
+            <Button x:Name="btnBack" Content="Назад" Style="{StaticResource btnTemplate}" Click="btnBack_Click" />
+        </StackPanel>
     </Grid>
 </Page>

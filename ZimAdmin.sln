@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZimAdmin", "ZimAdmin\ZimAdmin.csproj", "{E87D0A44-2531-4A06-96A3-67C0531BCACF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZimAdminTests2", "ZimAdminTests2\ZimAdminTests2.csproj", "{0B34F4CD-3825-4BA8-9B6B-24C13EDBC1C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{E87D0A44-2531-4A06-96A3-67C0531BCACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E87D0A44-2531-4A06-96A3-67C0531BCACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E87D0A44-2531-4A06-96A3-67C0531BCACF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B34F4CD-3825-4BA8-9B6B-24C13EDBC1C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B34F4CD-3825-4BA8-9B6B-24C13EDBC1C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B34F4CD-3825-4BA8-9B6B-24C13EDBC1C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B34F4CD-3825-4BA8-9B6B-24C13EDBC1C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

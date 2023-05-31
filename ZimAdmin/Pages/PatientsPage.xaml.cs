@@ -26,7 +26,7 @@ namespace ZimAdmin.Pages
         public PatientsPage()
         {
             InitializeComponent();
-            searchPatient();
+            SearchPatient();
         }
 
         private void btnLookConclution_Click(object sender, RoutedEventArgs e)
@@ -54,7 +54,7 @@ namespace ZimAdmin.Pages
             }
         }
 
-        private void searchPatient()
+        private void SearchPatient()
         {
             List<Patients> patients = GetDbContext.GetContext().Patients.ToList();
 
@@ -76,17 +76,17 @@ namespace ZimAdmin.Pages
 
         private void SearchPatient(object sender, TextChangedEventArgs e)
         {
-            searchPatient();
+            SearchPatient();
         }
 
         private void tbxSearchLName_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            blocker.onlyLetters(e);
+            blocker.OnlyLetters(e);
         }
 
         private void tbxSearchLName_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            blocker.spaceBlocker(e);
+            blocker.SpaceBlocker(e);
         }
     }
 }

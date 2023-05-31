@@ -26,7 +26,7 @@
                             <Run Text="{Binding Types_of_services.Name}"/>
                             <LineBreak/>
                             <Run Text="Смена:"/>
-                            <Run Text="{Binding Shift}"/>
+                            <Run Text="{Binding Work_shift.Number}"/>
                         </TextBlock>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>

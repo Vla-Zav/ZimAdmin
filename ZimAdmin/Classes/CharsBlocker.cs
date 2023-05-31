@@ -15,7 +15,7 @@ namespace ZimAdmin.Classes
         /// </summary>
         /// <param name="text">Текстовое поле ввода</param>
         /// <param name="e">Нажатая клавиша</param>
-        public void zeroFirstBlocker(string text, KeyEventArgs e)
+        public void ZeroFirstBlocker(string text, KeyEventArgs e)
         {
             if (text.Length == 0)
                 if (e.Key == Key.D0)
@@ -26,7 +26,7 @@ namespace ZimAdmin.Classes
         /// Метод блокирует возможность ввода пробела
         /// </summary>
         /// <param name="e">Нажатая клавиша</param>
-        public void spaceBlocker(KeyEventArgs e)
+        public void SpaceBlocker(KeyEventArgs e)
         { 
             if (e.Key == Key.Space)
                 e.Handled = true;
@@ -36,7 +36,7 @@ namespace ZimAdmin.Classes
         /// Метод блокирует возможность стирания данных из полоя
         /// </summary>
         /// <param name="e"></param>
-        public void backSpaceBlocker(KeyEventArgs e)
+        public void BackSpaceBlocker(KeyEventArgs e)
         {
             if (e.Key == Key.Back)
                 e.Handled = true;
@@ -47,12 +47,12 @@ namespace ZimAdmin.Classes
         /// </summary>
         /// <param name="e">Нажатая клавиша</param>
 
-        public void onlyNumbers(TextCompositionEventArgs e)
+        public void OnlyNumbers(TextCompositionEventArgs e)
         {
             e.Handled = !Regex.IsMatch(e.Text, @"[0-9]");
         }
 
-        public void onlyLetters(TextCompositionEventArgs e)
+        public void OnlyLetters(TextCompositionEventArgs e)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace ZimAdmin.Classes
         /// Метод блокирует возможность ввода спецсимволов
         /// </summary>
         /// <param name="e">Нажатая клавиша</param>
-        public void specialCharsBlocker(TextCompositionEventArgs e)
+        public void SpecialCharsBlocker(TextCompositionEventArgs e)
         {
             //Оператор try необходим для избежания фатальной ошибки ввода символа
             try
@@ -78,7 +78,7 @@ namespace ZimAdmin.Classes
         /// Метод позволяет вводить только русские буквы
         /// </summary>
         /// <param name="e"></param>
-        public void russianLetters(TextCompositionEventArgs e)
+        public void RussianLetters(TextCompositionEventArgs e)
         {
             try
             {
@@ -92,7 +92,7 @@ namespace ZimAdmin.Classes
         /// Метод позволяет вводить только русские буквы
         /// </summary>
         /// <param name="e"></param>
-        public void noRussianLetters(TextCompositionEventArgs e)
+        public void NoRussianLetters(TextCompositionEventArgs e)
         {
             try
             {

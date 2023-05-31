@@ -62,14 +62,14 @@ namespace ZimAdmin.Pages
 
         private void tbxCostService_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            blocker.onlyNumbers(e);
+            blocker.OnlyNumbers(e);
         }
 
 
         private void tbxCostService_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            blocker.zeroFirstBlocker(tbxCostService.Text, e);
-            blocker.spaceBlocker(e);
+            blocker.ZeroFirstBlocker(tbxCostService.Text, e);
+            blocker.SpaceBlocker(e);
         }
     }
 }

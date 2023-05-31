@@ -43,7 +43,7 @@ namespace ZimAdmin.Pages
                 errors.AppendLine("Дата не может быть прошедшей");
             else if (dtpEditDateTime.Value.Value.Hour < DateTime.Now.Hour && dtpEditDateTime.Value.Value.Date == DateTime.Now.Date)
                 errors.AppendLine("Время не может быть прошедшим");
-            else if (!isDoctorTime())
+            else if (!IsDoctorTime())
                 errors.AppendLine("Доктор не работает в это время");
 
             if (errors.Length > 0)
@@ -66,7 +66,7 @@ namespace ZimAdmin.Pages
             }
         }
 
-        private bool isDoctorTime()
+        private bool IsDoctorTime()
         {
             int shift = currentAppointment.Doctors.Shift;
             if (shift == 1 && dtpEditDateTime.Value.Value.Hour > 14 || dtpEditDateTime.Value.Value.Hour < 8)

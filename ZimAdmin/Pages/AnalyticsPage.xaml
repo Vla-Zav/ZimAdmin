@@ -15,14 +15,14 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+        <StackPanel Margin="0 10" Orientation="Horizontal" HorizontalAlignment="Center" >
             <TextBlock Text="Аналитика" Style="{StaticResource tbTemplate}"/>
             <ComboBox x:Name="cbAnalytics" SelectionChanged="cbAnalytics_SelectionChanged"/>
         </StackPanel>
-        <WindowsFormsHost Grid.Row="1">
-            <chart:Chart x:Name="chartsServices">
+        <WindowsFormsHost Grid.Row="1" Background="Black">
+            <chart:Chart BorderlineColor="Black" x:Name="chartsServices">
                 <chart:Chart.Legends>
-                    <chart:Legend/>
+                    <chart:Legend Font="Consolas" BorderColor="Black"/>
                 </chart:Chart.Legends>
             </chart:Chart>
         </WindowsFormsHost>

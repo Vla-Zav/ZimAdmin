@@ -62,12 +62,12 @@ namespace ZimAdmin.Pages
 
         private void specialCharsBlocker_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            blocker.specialCharsBlocker(e);
-            blocker.noRussianLetters(e);
+            blocker.SpecialCharsBlocker(e);
+            blocker.NoRussianLetters(e);
         }
         private void spaceBlocker_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            blocker.spaceBlocker(e);
+            blocker.SpaceBlocker(e);
         }
     }
 }

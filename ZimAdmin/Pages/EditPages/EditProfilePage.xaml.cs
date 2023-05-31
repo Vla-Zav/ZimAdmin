@@ -26,12 +26,10 @@ namespace ZimAdmin.Pages
     {
         CharsBlocker blocker = new CharsBlocker();
         private Admins currentAdmin = new Admins();
-        private Admins originalAdmin = null;
         public EditProfilePage()
         {
             InitializeComponent();
             currentAdmin = GetDbContext.GetContext().Admins.Find(AuthPage.admins.id_Admin);
-            originalAdmin = CloneAdmin(currentAdmin);
             DataContext = currentAdmin;
         }
 
@@ -78,41 +76,25 @@ namespace ZimAdmin.Pages
         }
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            currentAdmin = CloneAdmin(originalAdmin);
-            DataContext = currentAdmin;
-            GetDbContext.GetContext().ChangeTracker.Entries().ToList().ForEach(entire => entire.Reload());
             ManageClass.getFrame.GoBack();
-        }
-
-        private Admins CloneAdmin(Admins admin)
-        {
-            // Создаем копию сущности Admins
-            return new Admins
-            {
-                Last_Name = admin.Last_Name,
-                First_Name = admin.First_Name,
-                Middle_Name = admin.Middle_Name,
-                Login = admin.Login,
-                Password = admin.Password
-            };
         }
 
 
         private void specialCharsBlocker_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            blocker.specialCharsBlocker(e);
-            blocker.noRussianLetters(e);
+            blocker.SpecialCharsBlocker(e);
+            blocker.NoRussianLetters(e);
         }
 
         private void onlyLetters_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            blocker.onlyLetters(e);
-            blocker.russianLetters(e);
+            blocker.OnlyLetters(e);
+            blocker.RussianLetters(e);
         }
 
         private void spaceBlocker_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            blocker.spaceBlocker(e);
+            blocker.SpaceBlocker(e);
         }
     }
 }

@@ -37,30 +37,7 @@ namespace ZimAdmin.Pages
 
         private void btnEnter_Click(object sender, RoutedEventArgs e)
         {
-            isAuth(tbxLogin.Text, passBox.Password);
-        }
-        private void btnReg_Click(object sender, RoutedEventArgs e)
-        {
-            ManageClass.getFrame.Navigate(new RegPage());
-        }
-
-
-        private bool isAuth(string currentLogin, string currentPassword)
-        {
-            bool isAuth;
-            try
-            {
-                admins = hospitalEntities.Admins.FirstOrDefault(user => user.Login == currentLogin && user.Password == currentPassword);
-                if (admins != null)
-                    isAuth = true;
-                else isAuth = false;
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message);
-                isAuth = false;
-            }
-            if (isAuth)
+            if (IsAuth(tbxLogin.Text, passBox.Password))
             {
                 try
                 {
@@ -70,30 +47,54 @@ namespace ZimAdmin.Pages
                     GetDbContext.GetContext().Authorization_history.Add(history);
                     GetDbContext.GetContext().SaveChanges();
                 }
-                catch (Exception ex){ MessageBox.Show(ex.Message, "Ошибка записи в историю", MessageBoxButton.OK, MessageBoxImage.Information); }
-                
+                catch (Exception ex) { MessageBox.Show(ex.Message, "Ошибка записи в историю", MessageBoxButton.OK, MessageBoxImage.Information); }
+
                 ManageClass.getFrame.Navigate(new ProfilePage());
             }
             else
             {
                 unsuccessfulAttempts++;
-                if(unsuccessfulAttempts == 3)
+                if (unsuccessfulAttempts == 3)
                 {
                     MessageBox.Show("Вы превысили количество попыток", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
                     Application.Current.Shutdown();
                 }
                 MessageBox.Show("Не верный логин или пароль", "Ошибка авторизации", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+        }
+        private void btnReg_Click(object sender, RoutedEventArgs e)
+        {
+            ManageClass.getFrame.Navigate(new RegPage());
+        }
+
+
+        public bool IsAuth(string currentLogin, string currentPassword)
+        {
+            bool isAuth;
+            try
+            {
+                admins = hospitalEntities.Admins.FirstOrDefault(user => user.Login == currentLogin && user.Password == currentPassword);
+                if (admins != null)
+                {
+                    isAuth = true;
+                }
+                else isAuth = false;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+                isAuth = false;
+            }
             return isAuth;
         }
 
         private void specialCharsBlocker_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            blocker.specialCharsBlocker(e);
+            blocker.SpecialCharsBlocker(e);
         }
         private void spaceBlocker_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            blocker.spaceBlocker(e);
+            blocker.SpaceBlocker(e);
         }
 
         private void passBox_KeyDown(object sender, KeyEventArgs e)

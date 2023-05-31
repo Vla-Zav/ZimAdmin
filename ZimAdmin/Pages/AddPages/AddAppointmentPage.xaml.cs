@@ -51,7 +51,7 @@ namespace ZimAdmin.Pages
                 errors.AppendLine("Дата не может быть прошедшей");
             else if (dtpAppointmentDate.Value.Value.Hour <= DateTime.Now.Hour && dtpAppointmentDate.Value.Value.Date == DateTime.Now.Date)
                 errors.AppendLine("Время не может быть прошедшим");
-            else if (!isDoctorTime())
+            else if (!IsDoctorTime())
                 errors.AppendLine("Доктор не работает в это время");
 
             if (errors.Length > 0)
@@ -87,14 +87,16 @@ namespace ZimAdmin.Pages
             currentAppointment.Doctors = (Doctors)cbDoctors.SelectedItem;
         }
 
-        private bool isDoctorTime()
+        private bool IsDoctorTime()
         {
             int shift = currentAppointment.Doctors.Shift;
-            if (shift == 1 && dtpAppointmentDate.Value.Value.Hour > 14 || dtpAppointmentDate.Value.Value.Hour < 8)
+            if (shift == 1 && (dtpAppointmentDate.Value.Value.Hour > 14 || dtpAppointmentDate.Value.Value.Hour < 8))
                 return false;
-            else if (shift == 2 && dtpAppointmentDate.Value.Value.Hour < 14 || dtpAppointmentDate.Value.Value.Hour > 19)
+            else if (shift == 2 && (dtpAppointmentDate.Value.Value.Hour < 14 || dtpAppointmentDate.Value.Value.Hour > 19))
                 return false;
-            else if(shift == 3 && dtpAppointmentDate.Value.Value.Hour > 19 || dtpAppointmentDate.Value.Value.Hour < 8)
+            else if(shift == 3 && (dtpAppointmentDate.Value.Value.Hour > 19 || dtpAppointmentDate.Value.Value.Hour < 8))
+                return false;
+            else if (shift == 4 && (dtpAppointmentDate.Value.Value.Hour < 19 && dtpAppointmentDate.Value.Value.Hour > 8))
                 return false;
             return true;
         }

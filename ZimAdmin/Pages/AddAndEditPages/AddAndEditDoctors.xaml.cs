@@ -38,7 +38,7 @@ namespace ZimAdmin.Pages
         {
             StringBuilder errors = new StringBuilder();
 
-            new LFMTemplate(currentDoctor.Last_Name, currentDoctor.First_Name, currentDoctor.Middle_Name, errors);
+            LFMTemplate.LFMComplite(currentDoctor.Last_Name, currentDoctor.First_Name, currentDoctor.Middle_Name, errors);
             
             if (cbSpecialty.SelectedItem == null)
                 errors.AppendLine("Специальность не указана");
@@ -76,12 +76,12 @@ namespace ZimAdmin.Pages
 
         private void onlyLetters_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            blocker.russianLetters(e);
+            blocker.RussianLetters(e);
         }
 
         private void spaceBlocker_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            blocker.spaceBlocker(e);
+            blocker.SpaceBlocker(e);
         }
     }
 }

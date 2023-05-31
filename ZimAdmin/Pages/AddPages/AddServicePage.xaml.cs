@@ -61,18 +61,18 @@ namespace ZimAdmin.Pages.AddPages
 
         private void specialCharsBlocker_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            blocker.specialCharsBlocker(e);
+            blocker.SpecialCharsBlocker(e);
         }
 
         private void onlyNumbers_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            blocker.onlyNumbers(e);
+            blocker.OnlyNumbers(e);
         }
 
         private void spaceAndZeroBlocker_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            blocker.spaceBlocker(e);
-            blocker.zeroFirstBlocker(tbxCostService.Text, e);
+            blocker.SpaceBlocker(e);
+            blocker.ZeroFirstBlocker(tbxCostService.Text, e);
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)

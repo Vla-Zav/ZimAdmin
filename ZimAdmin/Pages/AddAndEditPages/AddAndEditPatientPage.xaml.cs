@@ -39,7 +39,7 @@ namespace ZimAdmin.Pages
         {
             StringBuilder errors = new StringBuilder();
 
-            new LFMTemplate(currentPatient.Last_Name, currentPatient.First_Name, currentPatient.Middle_Name, errors);
+            LFMTemplate.LFMComplite(currentPatient.Last_Name, currentPatient.First_Name, currentPatient.Middle_Name, errors);
             
             if (!tbxPatientPhone.IsMaskFull)
                 errors.AppendLine("Номер телефона не указан");
@@ -74,12 +74,12 @@ namespace ZimAdmin.Pages
 
         private void onlyLetters_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            blocker.russianLetters(e);
+            blocker.RussianLetters(e);
         }
 
         private void spaceBlocker_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            blocker.spaceBlocker(e);
+            blocker.SpaceBlocker(e);
         }
 
         private void calBDPatient_PreviewKeyDown(object sender, KeyEventArgs e)

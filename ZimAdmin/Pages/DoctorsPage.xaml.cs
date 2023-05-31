@@ -42,7 +42,7 @@ namespace ZimAdmin.Pages
             
             GetDbContext.GetContext().ChangeTracker.Entries().ToList().ForEach(entry => entry.Reload());
             
-            searchDoctors();
+            SearchDoctors();
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
@@ -82,7 +82,7 @@ namespace ZimAdmin.Pages
             }
         }
 
-        private void searchDoctors()
+        private void SearchDoctors()
         {
             List<Doctors> doctors = GetDbContext.GetContext().Doctors.ToList();
             Types_of_services idSpetialty = (Types_of_services)cbSpecialty.SelectedItem;
@@ -102,13 +102,12 @@ namespace ZimAdmin.Pages
                 dgDoctors.Visibility = Visibility.Visible;
                 tbNotFound.Visibility = Visibility.Collapsed;
             }
-
             dgDoctors.ItemsSource = doctors;
         }
 
         private void search_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            searchDoctors();
+            SearchDoctors();
         }
     }
 }

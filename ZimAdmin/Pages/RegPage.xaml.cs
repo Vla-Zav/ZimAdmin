@@ -35,7 +35,7 @@ namespace ZimAdmin.Pages
         {
             StringBuilder errors = new StringBuilder();
 
-            new LFMTemplate(newAdmin.Last_Name, newAdmin.First_Name, newAdmin.Middle_Name, errors);
+            LFMTemplate.LFMComplite(newAdmin.Last_Name, newAdmin.First_Name, newAdmin.Middle_Name, errors);
 
             if (string.IsNullOrWhiteSpace(tbxLogin.Text))
                 errors.AppendLine("Логин не указан");
@@ -81,18 +81,18 @@ namespace ZimAdmin.Pages
 
         private void onlyLetters_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            blocker.russianLetters(e);
+            blocker.RussianLetters(e);
         }
 
         private void specialCharsBlocker_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            blocker.specialCharsBlocker(e);
-            blocker.noRussianLetters(e);
+            blocker.SpecialCharsBlocker(e);
+            blocker.NoRussianLetters(e);
         }
 
         private void spaceBlocker_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            blocker.spaceBlocker(e);
+            blocker.SpaceBlocker(e);
         }
     }
 }
