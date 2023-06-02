@@ -14,9 +14,9 @@ namespace ZimAdmin.Entitys
     
     public partial class Appointments
     {
-        public int id_Appointmaent { get; set; }
-        public int id_Doctor { get; set; }
-        public int id_Patient { get; set; }
+        public int Id_Appointmaent { get; set; }
+        public int Id_Doctor { get; set; }
+        public int Id_Patient { get; set; }
         public System.DateTime DataTime_Appointment { get; set; }
     
         public virtual Doctors Doctors { get; set; }

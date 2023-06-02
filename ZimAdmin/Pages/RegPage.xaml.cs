@@ -52,6 +52,14 @@ namespace ZimAdmin.Pages
                 return;
             }
 
+            Admins existsAdmin = GetDbContext.GetContext().Admins.FirstOrDefault(a => a.Login == tbxLogin.Text);
+            if(existsAdmin != null)
+            {
+                MessageBox.Show($"Пользователь с логином {existsAdmin.Login} уже существует\nВыберете другой",
+                    "Внимание!", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
             try
             {
                 newAdmin.Password = pbPassword.Password;

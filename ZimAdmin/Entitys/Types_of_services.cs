@@ -20,7 +20,7 @@ namespace ZimAdmin.Entitys
             this.Doctors = new HashSet<Doctors>();
         }
     
-        public int id_Type { get; set; }
+        public int Id_Type { get; set; }
         public string Name { get; set; }
         public int Cost { get; set; }
     

@@ -80,6 +80,7 @@
         </Style>
 
         <Style TargetType="DataGrid">
+            <Setter Property="CanUserReorderColumns" Value="False"/>
             <Setter Property="SelectionMode" Value="Single"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="FontFamily" Value="Consolas"/>

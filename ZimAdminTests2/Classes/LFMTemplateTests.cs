@@ -19,7 +19,11 @@ namespace ZimAdmin.Classes.Tests
             lastName = "Шипеков";
             firstName = "Максим";
             middleName = "Олегович";
-            Assert.IsTrue(LFMTemplate.LFMComplite(lastName, firstName, middleName, error));
+            
+            bool expectedResult = true;
+            bool actual = LFMTemplate.LFMComplite(lastName, firstName, middleName, error);
+
+            Assert.AreEqual(expectedResult, actual);
         }
 
         [TestMethod()]
@@ -28,7 +32,11 @@ namespace ZimAdmin.Classes.Tests
             lastName = "Z";
             firstName = "Максим";
             middleName = "Олегович";
-            Assert.IsFalse(LFMTemplate.LFMComplite(lastName, firstName, middleName, error));
+
+            bool expectedResult = false;
+            bool actual = LFMTemplate.LFMComplite(lastName, firstName, middleName, error);
+
+            Assert.AreEqual(expectedResult, actual);
         }
         [TestMethod()]
         public void LFMCompliteNullFirstNameTest()
@@ -36,7 +44,11 @@ namespace ZimAdmin.Classes.Tests
             lastName = "Макиев";
             firstName = "";
             middleName = "Евгеньевич";
-            Assert.IsFalse(LFMTemplate.LFMComplite(lastName, firstName, middleName, error));
+
+            bool expectedResult = false;
+            bool actual = LFMTemplate.LFMComplite(lastName, firstName, middleName, error);
+
+            Assert.AreEqual(expectedResult, actual);
         }
         [TestMethod()]
         public void LFMCompliteShortMiddleNameTest()
@@ -44,7 +56,12 @@ namespace ZimAdmin.Classes.Tests
             lastName = "Жилая";
             firstName = "Полина";
             middleName = "Яник";
-            Assert.IsFalse(LFMTemplate.LFMComplite(lastName, firstName, middleName, error));
+
+
+            bool expectedResult = false;
+            bool actual = LFMTemplate.LFMComplite(lastName, firstName, middleName, error);
+
+            Assert.AreEqual(expectedResult, actual);
         }
     }
 }

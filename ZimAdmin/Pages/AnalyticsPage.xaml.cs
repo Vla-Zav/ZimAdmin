@@ -60,8 +60,8 @@ namespace ZimAdmin.Pages
                         {
                             currentSeries.ChartType = SeriesChartType.Doughnut;
                             
-                            currentSeries.Points.AddXY(typesServices.Find(serv.id_Type).Name,
-                                appointments.Where(a => a.Doctors.Specialty == serv.id_Type).Count());
+                            currentSeries.Points.AddXY(typesServices.Find(serv.Id_Type).Name,
+                                appointments.Where(a => a.Doctors.Specialty == serv.Id_Type).Count());
                             
                             exportPanel.Visibility = Visibility.Collapsed;
                         }
@@ -74,7 +74,7 @@ namespace ZimAdmin.Pages
                             currentSeries.ChartType = SeriesChartType.Pie;
                             
                             currentSeries.Points.AddXY($"{doc.Last_Name} {doc.First_Name}",
-                                appointments.ToList().Where(a => a.id_Doctor == doc.id_Doctor).Sum(s => s.Doctors.Types_of_services.Cost));
+                                appointments.ToList().Where(a => a.Id_Doctor == doc.Id_Doctor).Sum(s => s.Doctors.Types_of_services.Cost));
                         
                             exportPanel.Visibility = Visibility.Visible;
                         }
@@ -87,7 +87,7 @@ namespace ZimAdmin.Pages
                             currentSeries.ChartType = SeriesChartType.StackedColumn;
 
                             currentSeries.Points.AddXY(shift.Number,
-                                doctors.ToList().Where(d => d.Shift == shift.id_Shift).Count());
+                                doctors.ToList().Where(d => d.Shift == shift.Id_Shift).Count());
                          
                             exportPanel.Visibility = Visibility.Collapsed;
                         }
@@ -130,8 +130,8 @@ namespace ZimAdmin.Pages
                 worksheet.Cells[5][rowsData] = doctor.Work_shift.Number;
                 cellCost = worksheet.Cells[6][rowsData];
                 cellCost.NumberFormat = "#,##0₽";
-                cellCost.Value = doctor.Appointments.Where(a => a.id_Doctor == doctor.id_Doctor).Sum(s => s.Doctors.Types_of_services.Cost);
-                worksheet.Cells[6][rowsData] = doctor.Appointments.Where(a => a.id_Doctor == doctor.id_Doctor).Sum(s => s.Doctors.Types_of_services.Cost);
+                cellCost.Value = doctor.Appointments.Where(a => a.Id_Doctor == doctor.Id_Doctor).Sum(s => s.Doctors.Types_of_services.Cost);
+                worksheet.Cells[6][rowsData] = doctor.Appointments.Where(a => a.Id_Doctor == doctor.Id_Doctor).Sum(s => s.Doctors.Types_of_services.Cost);
                 range.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
                 rowsData++;
             }

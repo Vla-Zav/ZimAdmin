@@ -42,8 +42,8 @@ namespace ZimAdmin.Pages
                 try
                 {
                     DataContext = admins;
-                    history.DateAuth = DateTime.Now;
-                    history.id_Admin = admins.id_Admin;
+                    history.Date_Auth = DateTime.Now;
+                    history.Id_Admin = admins.Id_Admin;
                     GetDbContext.GetContext().Authorization_history.Add(history);
                     GetDbContext.GetContext().SaveChanges();
                 }

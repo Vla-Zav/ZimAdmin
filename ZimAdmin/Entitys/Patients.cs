@@ -21,7 +21,7 @@ namespace ZimAdmin.Entitys
             this.Conclusions = new HashSet<Conclusions>();
         }
     
-        public int id_Patient { get; set; }
+        public int Id_Patient { get; set; }
         public string Last_Name { get; set; }
         public string First_Name { get; set; }
         public string Middle_Name { get; set; }

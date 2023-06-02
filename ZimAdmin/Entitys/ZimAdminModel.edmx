@@ -7,9 +7,9 @@
     <Schema Namespace="Хранилище Privat_HospitalModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admins">
           <Key>
-            <PropertyRef Name="id_Admin" />
+            <PropertyRef Name="Id_Admin" />
           </Key>
-          <Property Name="id_Admin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Admin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Last_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="First_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Middle_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -18,28 +18,28 @@
         </EntityType>
         <EntityType Name="Appointments">
           <Key>
-            <PropertyRef Name="id_Appointmaent" />
+            <PropertyRef Name="Id_Appointmaent" />
           </Key>
-          <Property Name="id_Appointmaent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_Doctor" Type="int" Nullable="false" />
-          <Property Name="id_Patient" Type="int" Nullable="false" />
+          <Property Name="Id_Appointmaent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Doctor" Type="int" Nullable="false" />
+          <Property Name="Id_Patient" Type="int" Nullable="false" />
           <Property Name="DataTime_Appointment" Type="smalldatetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Authorization_history">
           <Key>
-            <PropertyRef Name="id_Auth" />
+            <PropertyRef Name="Id_Auth" />
           </Key>
-          <Property Name="id_Auth" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_Admin" Type="int" Nullable="false" />
-          <Property Name="DateAuth" Type="smalldatetime" Nullable="false" />
+          <Property Name="Id_Auth" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Admin" Type="int" Nullable="false" />
+          <Property Name="Date_Auth" Type="smalldatetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Conclusions">
           <Key>
-            <PropertyRef Name="id_Counclusion" />
+            <PropertyRef Name="Id_Counclusion" />
           </Key>
-          <Property Name="id_Counclusion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_Patient" Type="int" Nullable="false" />
-          <Property Name="id_Doctor" Type="int" Nullable="false" />
+          <Property Name="Id_Counclusion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Patient" Type="int" Nullable="false" />
+          <Property Name="Id_Doctor" Type="int" Nullable="false" />
           <Property Name="Complaint" Type="nvarchar(max)" />
           <Property Name="Life_History" Type="nvarchar(max)" />
           <Property Name="Objective_Status" Type="nvarchar(max)" />
@@ -49,9 +49,9 @@
         </EntityType>
         <EntityType Name="Doctors">
           <Key>
-            <PropertyRef Name="id_Doctor" />
+            <PropertyRef Name="Id_Doctor" />
           </Key>
-          <Property Name="id_Doctor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Doctor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Last_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="First_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Middle_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -60,9 +60,9 @@
         </EntityType>
         <EntityType Name="Patients">
           <Key>
-            <PropertyRef Name="id_Patient" />
+            <PropertyRef Name="Id_Patient" />
           </Key>
-          <Property Name="id_Patient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Patient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Last_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="First_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Middle_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -81,17 +81,17 @@
         </EntityType>
         <EntityType Name="Types_of_services">
           <Key>
-            <PropertyRef Name="id_Type" />
+            <PropertyRef Name="Id_Type" />
           </Key>
-          <Property Name="id_Type" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Type" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Cost" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Work_shift">
           <Key>
-            <PropertyRef Name="id_Shift" />
+            <PropertyRef Name="Id_Shift" />
           </Key>
-          <Property Name="id_Shift" Type="int" Nullable="false" />
+          <Property Name="Id_Shift" Type="int" Nullable="false" />
           <Property Name="Start_Work_Day" Type="time" Precision="7" Nullable="false" />
           <Property Name="End_Work_Day" Type="time" Precision="7" Nullable="false" />
           <Property Name="Number" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -101,10 +101,10 @@
           <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Doctors">
-              <PropertyRef Name="id_Doctor" />
+              <PropertyRef Name="Id_Doctor" />
             </Principal>
             <Dependent Role="Appointments">
-              <PropertyRef Name="id_Doctor" />
+              <PropertyRef Name="Id_Doctor" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -113,10 +113,10 @@
           <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Patients">
-              <PropertyRef Name="id_Patient" />
+              <PropertyRef Name="Id_Patient" />
             </Principal>
             <Dependent Role="Appointments">
-              <PropertyRef Name="id_Patient" />
+              <PropertyRef Name="Id_Patient" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -125,10 +125,10 @@
           <End Role="Authorization_history" Type="Self.Authorization_history" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Admins">
-              <PropertyRef Name="id_Admin" />
+              <PropertyRef Name="Id_Admin" />
             </Principal>
             <Dependent Role="Authorization_history">
-              <PropertyRef Name="id_Admin" />
+              <PropertyRef Name="Id_Admin" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -137,10 +137,10 @@
           <End Role="Conclusions" Type="Self.Conclusions" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Doctors">
-              <PropertyRef Name="id_Doctor" />
+              <PropertyRef Name="Id_Doctor" />
             </Principal>
             <Dependent Role="Conclusions">
-              <PropertyRef Name="id_Doctor" />
+              <PropertyRef Name="Id_Doctor" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -149,10 +149,10 @@
           <End Role="Conclusions" Type="Self.Conclusions" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Patients">
-              <PropertyRef Name="id_Patient" />
+              <PropertyRef Name="Id_Patient" />
             </Principal>
             <Dependent Role="Conclusions">
-              <PropertyRef Name="id_Patient" />
+              <PropertyRef Name="Id_Patient" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -161,7 +161,7 @@
           <End Role="Doctors" Type="Self.Doctors" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Types_of_services">
-              <PropertyRef Name="id_Type" />
+              <PropertyRef Name="Id_Type" />
             </Principal>
             <Dependent Role="Doctors">
               <PropertyRef Name="Specialty" />
@@ -173,7 +173,7 @@
           <End Role="Doctors" Type="Self.Doctors" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Work_shift">
-              <PropertyRef Name="id_Shift" />
+              <PropertyRef Name="Id_Shift" />
             </Principal>
             <Dependent Role="Doctors">
               <PropertyRef Name="Shift" />
@@ -225,43 +225,42 @@
       <Schema Namespace="Privat_HospitalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Admins">
           <Key>
-            <PropertyRef Name="id_Admin" />
+            <PropertyRef Name="Id_Admin" />
           </Key>
-          <Property Name="id_Admin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Admin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Middle_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Authorization_history" Relationship="Privat_HospitalModel.FK_Authorization_history_Admins" FromRole="Admins" ToRole="Authorization_history" />
+          <NavigationProperty Name="Authorization_history" Relationship="Self.FK_Authorization_history_Admins" FromRole="Admins" ToRole="Authorization_history" />
         </EntityType>
         <EntityType Name="Appointments">
           <Key>
-            <PropertyRef Name="id_Appointmaent" />
+            <PropertyRef Name="Id_Appointmaent" />
           </Key>
-          <Property Name="id_Appointmaent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_Doctor" Type="Int32" Nullable="false" />
-          <Property Name="id_Patient" Type="Int32" Nullable="false" />
+          <Property Name="Id_Appointmaent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Doctor" Type="Int32" Nullable="false" />
+          <Property Name="Id_Patient" Type="Int32" Nullable="false" />
           <Property Name="DataTime_Appointment" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Doctors" Relationship="Self.FK_Appointments_Doctors1" FromRole="Appointments" ToRole="Doctors" />
           <NavigationProperty Name="Patients" Relationship="Self.FK_Appointments_Patients1" FromRole="Appointments" ToRole="Patients" />
         </EntityType>
         <EntityType Name="Authorization_history">
           <Key>
-            <PropertyRef Name="id_Auth" />
+            <PropertyRef Name="Id_Auth" />
           </Key>
-          <Property Name="id_Auth" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_Admin" Type="Int32" Nullable="false" />
-          <Property Name="DateAuth" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Admins" Relationship="Privat_HospitalModel.FK_Authorization_history_Admins" FromRole="Authorization_history" ToRole="Admins" />
+          <Property Name="Id_Auth" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Admin" Type="Int32" Nullable="false" />
+          <Property Name="Date_Auth" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Admins" Relationship="Self.FK_Authorization_history_Admins" FromRole="Authorization_history" ToRole="Admins" />
         </EntityType>
         <EntityType Name="Conclusions">
           <Key>
-            <PropertyRef Name="id_Counclusion" />
+            <PropertyRef Name="Id_Counclusion" />
           </Key>
-          <Property Name="id_Counclusion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_Patient" Type="Int32" Nullable="false" />
-          <Property Name="id_Doctor" Type="Int32" Nullable="false" />
+          <Property Name="Id_Patient" Type="Int32" Nullable="false" />
+          <Property Name="Id_Doctor" Type="Int32" Nullable="false" />
           <Property Name="Complaint" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Life_History" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Objective_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -270,12 +269,13 @@
           <Property Name="DataTime_Conclusion" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Doctors" Relationship="Self.FK_Conclusions_Doctors1" FromRole="Conclusions" ToRole="Doctors" />
           <NavigationProperty Name="Patients" Relationship="Self.FK_Conclusions_Patients1" FromRole="Conclusions" ToRole="Patients" />
+          <Property Name="Id_Counclusion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="Doctors">
           <Key>
-            <PropertyRef Name="id_Doctor" />
+            <PropertyRef Name="Id_Doctor" />
           </Key>
-          <Property Name="id_Doctor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Doctor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Middle_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -288,9 +288,9 @@
         </EntityType>
         <EntityType Name="Patients">
           <Key>
-            <PropertyRef Name="id_Patient" />
+            <PropertyRef Name="Id_Patient" />
           </Key>
-          <Property Name="id_Patient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Patient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Middle_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -311,32 +311,44 @@
         </EntityType>
         <EntityType Name="Types_of_services">
           <Key>
-            <PropertyRef Name="id_Type" />
+            <PropertyRef Name="Id_Type" />
           </Key>
-          <Property Name="id_Type" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Type" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Cost" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Doctors" Relationship="Self.FK_Doctors_Types_of_services" FromRole="Types_of_services" ToRole="Doctors" />
         </EntityType>
         <EntityType Name="Work_shift">
           <Key>
-            <PropertyRef Name="id_Shift" />
+            <PropertyRef Name="Id_Shift" />
           </Key>
-          <Property Name="id_Shift" Type="Int32" Nullable="false" />
+          <Property Name="Id_Shift" Type="Int32" Nullable="false" />
           <Property Name="Start_Work_Day" Type="Time" Nullable="false" Precision="7" />
           <Property Name="End_Work_Day" Type="Time" Nullable="false" Precision="7" />
           <Property Name="Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Doctors" Relationship="Self.FK_Doctors_Work_Shift" FromRole="Work_shift" ToRole="Doctors" />
         </EntityType>
+        <Association Name="FK_Authorization_history_Admins">
+          <End Role="Admins" Type="Self.Admins" Multiplicity="1" />
+          <End Role="Authorization_history" Type="Self.Authorization_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admins">
+              <PropertyRef Name="Id_Admin" />
+            </Principal>
+            <Dependent Role="Authorization_history">
+              <PropertyRef Name="Id_Admin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Appointments_Doctors1">
           <End Role="Doctors" Type="Self.Doctors" Multiplicity="1" />
           <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Doctors">
-              <PropertyRef Name="id_Doctor" />
+              <PropertyRef Name="Id_Doctor" />
             </Principal>
             <Dependent Role="Appointments">
-              <PropertyRef Name="id_Doctor" />
+              <PropertyRef Name="Id_Doctor" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -345,10 +357,10 @@
           <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Patients">
-              <PropertyRef Name="id_Patient" />
+              <PropertyRef Name="Id_Patient" />
             </Principal>
             <Dependent Role="Appointments">
-              <PropertyRef Name="id_Patient" />
+              <PropertyRef Name="Id_Patient" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -357,10 +369,10 @@
           <End Role="Conclusions" Type="Self.Conclusions" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Doctors">
-              <PropertyRef Name="id_Doctor" />
+              <PropertyRef Name="Id_Doctor" />
             </Principal>
             <Dependent Role="Conclusions">
-              <PropertyRef Name="id_Doctor" />
+              <PropertyRef Name="Id_Doctor" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -369,10 +381,10 @@
           <End Role="Conclusions" Type="Self.Conclusions" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Patients">
-              <PropertyRef Name="id_Patient" />
+              <PropertyRef Name="Id_Patient" />
             </Principal>
             <Dependent Role="Conclusions">
-              <PropertyRef Name="id_Patient" />
+              <PropertyRef Name="Id_Patient" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -381,7 +393,7 @@
           <End Role="Doctors" Type="Self.Doctors" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Types_of_services">
-              <PropertyRef Name="id_Type" />
+              <PropertyRef Name="Id_Type" />
             </Principal>
             <Dependent Role="Doctors">
               <PropertyRef Name="Specialty" />
@@ -393,7 +405,7 @@
           <End Role="Doctors" Type="Self.Doctors" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Work_shift">
-              <PropertyRef Name="id_Shift" />
+              <PropertyRef Name="Id_Shift" />
             </Principal>
             <Dependent Role="Doctors">
               <PropertyRef Name="Shift" />
@@ -410,6 +422,10 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Types_of_services" EntityType="Self.Types_of_services" />
           <EntitySet Name="Work_shift" EntityType="Self.Work_shift" />
+          <AssociationSet Name="FK_Authorization_history_Admins" Association="Self.FK_Authorization_history_Admins">
+            <End Role="Admins" EntitySet="Admins" />
+            <End Role="Authorization_history" EntitySet="Authorization_history" />
+          </AssociationSet>
           <AssociationSet Name="FK_Appointments_Doctors1" Association="Self.FK_Appointments_Doctors1">
             <End Role="Doctors" EntitySet="Doctors" />
             <End Role="Appointments" EntitySet="Appointments" />
@@ -434,23 +450,7 @@
             <End Role="Work_shift" EntitySet="Work_shift" />
             <End Role="Doctors" EntitySet="Doctors" />
           </AssociationSet>
-          <AssociationSet Name="FK_Authorization_history_Admins" Association="Privat_HospitalModel.FK_Authorization_history_Admins">
-            <End Role="Admins" EntitySet="Admins" />
-            <End Role="Authorization_history" EntitySet="Authorization_history" />
-          </AssociationSet>
         </EntityContainer>
-        <Association Name="FK_Authorization_history_Admins">
-          <End Type="Privat_HospitalModel.Admins" Role="Admins" Multiplicity="1" />
-          <End Type="Privat_HospitalModel.Authorization_history" Role="Authorization_history" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Admins">
-              <PropertyRef Name="id_Admin" />
-            </Principal>
-            <Dependent Role="Authorization_history">
-              <PropertyRef Name="id_Admin" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -460,7 +460,7 @@
           <EntitySetMapping Name="Admins">
             <EntityTypeMapping TypeName="Privat_HospitalModel.Admins">
               <MappingFragment StoreEntitySet="Admins">
-                <ScalarProperty Name="id_Admin" ColumnName="id_Admin" />
+                <ScalarProperty Name="Id_Admin" ColumnName="Id_Admin" />
                 <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
                 <ScalarProperty Name="First_Name" ColumnName="First_Name" />
                 <ScalarProperty Name="Middle_Name" ColumnName="Middle_Name" />
@@ -472,9 +472,9 @@
           <EntitySetMapping Name="Appointments">
             <EntityTypeMapping TypeName="Privat_HospitalModel.Appointments">
               <MappingFragment StoreEntitySet="Appointments">
-                <ScalarProperty Name="id_Appointmaent" ColumnName="id_Appointmaent" />
-                <ScalarProperty Name="id_Doctor" ColumnName="id_Doctor" />
-                <ScalarProperty Name="id_Patient" ColumnName="id_Patient" />
+                <ScalarProperty Name="Id_Appointmaent" ColumnName="Id_Appointmaent" />
+                <ScalarProperty Name="Id_Doctor" ColumnName="Id_Doctor" />
+                <ScalarProperty Name="Id_Patient" ColumnName="Id_Patient" />
                 <ScalarProperty Name="DataTime_Appointment" ColumnName="DataTime_Appointment" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -482,18 +482,18 @@
           <EntitySetMapping Name="Authorization_history">
             <EntityTypeMapping TypeName="Privat_HospitalModel.Authorization_history">
               <MappingFragment StoreEntitySet="Authorization_history">
-                <ScalarProperty Name="id_Auth" ColumnName="id_Auth" />
-                <ScalarProperty Name="id_Admin" ColumnName="id_Admin" />
-                <ScalarProperty Name="DateAuth" ColumnName="DateAuth" />
+                <ScalarProperty Name="Id_Auth" ColumnName="Id_Auth" />
+                <ScalarProperty Name="Id_Admin" ColumnName="Id_Admin" />
+                <ScalarProperty Name="Date_Auth" ColumnName="Date_Auth" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Conclusions">
             <EntityTypeMapping TypeName="Privat_HospitalModel.Conclusions">
               <MappingFragment StoreEntitySet="Conclusions">
-                <ScalarProperty Name="id_Counclusion" ColumnName="id_Counclusion" />
-                <ScalarProperty Name="id_Patient" ColumnName="id_Patient" />
-                <ScalarProperty Name="id_Doctor" ColumnName="id_Doctor" />
+                <ScalarProperty Name="Id_Counclusion" ColumnName="Id_Counclusion" />
+                <ScalarProperty Name="Id_Patient" ColumnName="Id_Patient" />
+                <ScalarProperty Name="Id_Doctor" ColumnName="Id_Doctor" />
                 <ScalarProperty Name="Complaint" ColumnName="Complaint" />
                 <ScalarProperty Name="Life_History" ColumnName="Life_History" />
                 <ScalarProperty Name="Objective_Status" ColumnName="Objective_Status" />
@@ -506,7 +506,7 @@
           <EntitySetMapping Name="Doctors">
             <EntityTypeMapping TypeName="Privat_HospitalModel.Doctors">
               <MappingFragment StoreEntitySet="Doctors">
-                <ScalarProperty Name="id_Doctor" ColumnName="id_Doctor" />
+                <ScalarProperty Name="Id_Doctor" ColumnName="Id_Doctor" />
                 <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
                 <ScalarProperty Name="First_Name" ColumnName="First_Name" />
                 <ScalarProperty Name="Middle_Name" ColumnName="Middle_Name" />
@@ -518,7 +518,7 @@
           <EntitySetMapping Name="Patients">
             <EntityTypeMapping TypeName="Privat_HospitalModel.Patients">
               <MappingFragment StoreEntitySet="Patients">
-                <ScalarProperty Name="id_Patient" ColumnName="id_Patient" />
+                <ScalarProperty Name="Id_Patient" ColumnName="Id_Patient" />
                 <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
                 <ScalarProperty Name="First_Name" ColumnName="First_Name" />
                 <ScalarProperty Name="Middle_Name" ColumnName="Middle_Name" />
@@ -541,7 +541,7 @@
           <EntitySetMapping Name="Types_of_services">
             <EntityTypeMapping TypeName="Privat_HospitalModel.Types_of_services">
               <MappingFragment StoreEntitySet="Types_of_services">
-                <ScalarProperty Name="id_Type" ColumnName="id_Type" />
+                <ScalarProperty Name="Id_Type" ColumnName="Id_Type" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Cost" ColumnName="Cost" />
               </MappingFragment>
@@ -550,7 +550,7 @@
           <EntitySetMapping Name="Work_shift">
             <EntityTypeMapping TypeName="Privat_HospitalModel.Work_shift">
               <MappingFragment StoreEntitySet="Work_shift">
-                <ScalarProperty Name="id_Shift" ColumnName="id_Shift" />
+                <ScalarProperty Name="Id_Shift" ColumnName="Id_Shift" />
                 <ScalarProperty Name="Start_Work_Day" ColumnName="Start_Work_Day" />
                 <ScalarProperty Name="End_Work_Day" ColumnName="End_Work_Day" />
                 <ScalarProperty Name="Number" ColumnName="Number" />

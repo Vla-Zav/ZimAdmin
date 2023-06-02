@@ -29,7 +29,7 @@ namespace ZimAdmin.Pages
         {
             InitializeComponent();
             currentPatient = patients;
-            dgCounclusion.ItemsSource = GetDbContext.GetContext().Conclusions.Where(p => p.id_Patient == patients.id_Patient).ToList();
+            dgCounclusion.ItemsSource = GetDbContext.GetContext().Conclusions.Where(p => p.Id_Patient == patients.Id_Patient).ToList();
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -107,8 +107,8 @@ namespace ZimAdmin.Pages
 
                 application.Visible = true;
 
-                document.SaveAs2($"Заключение от {DateTime.Today.ToShortDateString()} В.{conclusion.Doctors.Last_Name} П.{conclusion.Patients.Last_Name} №{conclusion.id_Counclusion}.docx");
-                document.SaveAs2($"Заключение от {DateTime.Today.ToShortDateString()} В.{conclusion.Doctors.Last_Name} П.{conclusion.Patients.Last_Name} №{conclusion.id_Counclusion}.pdf", Word.WdExportFormat.wdExportFormatPDF);
+                document.SaveAs2($"Заключение от {DateTime.Today.ToShortDateString()} В.{conclusion.Doctors.Last_Name} П.{conclusion.Patients.Last_Name} №{conclusion.Id_Counclusion}.docx");
+                document.SaveAs2($"Заключение от {DateTime.Today.ToShortDateString()} В.{conclusion.Doctors.Last_Name} П.{conclusion.Patients.Last_Name} №{conclusion.Id_Counclusion}.pdf", Word.WdExportFormat.wdExportFormatPDF);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Ошибка работы с документом", MessageBoxButton.OK, MessageBoxImage.Warning); }
         }

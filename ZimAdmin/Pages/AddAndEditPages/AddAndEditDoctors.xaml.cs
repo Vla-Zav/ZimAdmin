@@ -53,7 +53,7 @@ namespace ZimAdmin.Pages
 
             try
             {
-                if (currentDoctor.id_Doctor == 0)
+                if (currentDoctor.Id_Doctor == 0)
                 {
                     GetDbContext.GetContext().Doctors.Add(currentDoctor);
                     MessageBox.Show("Данные сохранены", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Information);

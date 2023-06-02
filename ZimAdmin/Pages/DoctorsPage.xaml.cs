@@ -88,7 +88,7 @@ namespace ZimAdmin.Pages
             Types_of_services idSpetialty = (Types_of_services)cbSpecialty.SelectedItem;
 
             if (cbSpecialty.SelectedIndex > 0)
-                doctors = doctors.Where(d => d.Specialty.Equals(idSpetialty.id_Type)).ToList();
+                doctors = doctors.Where(d => d.Specialty.Equals(idSpetialty.Id_Type)).ToList();
             if (cbShift.SelectedIndex > 0)
                 doctors = doctors.Where(d => d.Shift.Equals(cbShift.SelectedIndex)).ToList();
             

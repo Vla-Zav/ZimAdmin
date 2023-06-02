@@ -27,7 +27,7 @@ namespace ZimAdmin.Pages
         public ChangePasswordPage()
         {
             InitializeComponent();
-            currentAdmin = GetDbContext.GetContext().Admins.Find(AuthPage.admins.id_Admin);
+            currentAdmin = GetDbContext.GetContext().Admins.Find(AuthPage.admins.Id_Admin);
             DataContext = currentAdmin;
         }
 

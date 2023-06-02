@@ -354,20 +354,37 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\MyPhoto\MyPhoto.jpg" />
-    <Resource Include="Resources\Icons\software-engineer.png" />
-    <Resource Include="Resources\Icons\appointment.png" />
-    <Resource Include="Resources\Icons\doctor.png" />
-    <Resource Include="Resources\Icons\patient.png" />
-    <Resource Include="Resources\Icons\profile.png" />
-    <Resource Include="Resources\Icons\heartbeat.png" />
-    <Resource Include="Resources\Icons\exit.png" />
-    <Resource Include="Resources\Icons\analytics.png" />
-    <Resource Include="Resources\Icons\service.png" />
+    <Resource Include="Resources\Icons\software-engineer.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\appointment.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\doctor.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\patient.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\profile.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\heartbeat.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\exit.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\analytics.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\service.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Entitys\ZimAdminModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

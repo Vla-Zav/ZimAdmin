@@ -22,7 +22,7 @@ namespace ZimAdmin.Pages
     /// </summary>
     public partial class ProfilePage : Page
     {
-        private Admins currentAdmin = GetDbContext.GetContext().Admins.Find(AuthPage.admins.id_Admin);
+        private Admins currentAdmin = GetDbContext.GetContext().Admins.Find(AuthPage.admins.Id_Admin);
         public ProfilePage()
         {
             InitializeComponent();

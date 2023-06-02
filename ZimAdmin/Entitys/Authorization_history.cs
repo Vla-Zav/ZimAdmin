@@ -14,9 +14,9 @@ namespace ZimAdmin.Entitys
     
     public partial class Authorization_history
     {
-        public long id_Auth { get; set; }
-        public int id_Admin { get; set; }
-        public System.DateTime DateAuth { get; set; }
+        public long Id_Auth { get; set; }
+        public int Id_Admin { get; set; }
+        public System.DateTime Date_Auth { get; set; }
     
         public virtual Admins Admins { get; set; }
     }

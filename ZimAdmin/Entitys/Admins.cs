@@ -20,7 +20,7 @@ namespace ZimAdmin.Entitys
             this.Authorization_history = new HashSet<Authorization_history>();
         }
     
-        public int id_Admin { get; set; }
+        public int Id_Admin { get; set; }
         public string Last_Name { get; set; }
         public string First_Name { get; set; }
         public string Middle_Name { get; set; }

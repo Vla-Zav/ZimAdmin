@@ -16,7 +16,7 @@
         <StackPanel Margin="10">
             <TextBlock Text="Приёмы" Margin="0 0 0 15" Style="{StaticResource tbTemplate}"/>
             <TextBlock x:Name="tbNotFound" Text="Здесь пока ничего нет" Visibility="Collapsed" Style="{StaticResource tbTemplate}"/>
-            <DataGrid CanUserSortColumns="False" x:Name="dgAppointments" IsReadOnly="True" ColumnWidth="*" AutoGenerateColumns="False" CanUserResizeRows="False">
+            <DataGrid x:Name="dgAppointments" IsReadOnly="True" ColumnWidth="*" AutoGenerateColumns="False" CanUserResizeRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Доктор" Binding="{Binding Doctors.Last_Name}"/>
                     <DataGridTextColumn Header="Пациент" Binding="{Binding Patients.Last_Name}"/>

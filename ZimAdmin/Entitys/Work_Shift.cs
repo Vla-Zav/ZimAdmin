@@ -20,7 +20,7 @@ namespace ZimAdmin.Entitys
             this.Doctors = new HashSet<Doctors>();
         }
     
-        public int id_Shift { get; set; }
+        public int Id_Shift { get; set; }
         public System.TimeSpan Start_Work_Day { get; set; }
         public System.TimeSpan End_Work_Day { get; set; }
         public string Number { get; set; }

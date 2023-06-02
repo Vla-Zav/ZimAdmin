@@ -4,23 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4ed400d52c004753a3b83daf3c333218" Name="Diagram1">
+      <Diagram DiagramId="74880cc3f17e4f0fbbaf88cc7e9ada30" Name="Diagram1">
         <EntityTypeShape EntityType="Privat_HospitalModel.Admins" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Privat_HospitalModel.Appointments" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Privat_HospitalModel.Authorization_history" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Privat_HospitalModel.Authorization_history" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Privat_HospitalModel.Conclusions" Width="1.5" PointX="8.25" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Privat_HospitalModel.Doctors" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Privat_HospitalModel.Patients" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Privat_HospitalModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Privat_HospitalModel.Types_of_services" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Privat_HospitalModel.Work_shift" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <AssociationConnector Association="Privat_HospitalModel.FK_Authorization_history_Admins" ManuallyRouted="false" />
         <AssociationConnector Association="Privat_HospitalModel.FK_Appointments_Doctors1" ManuallyRouted="false" />
         <AssociationConnector Association="Privat_HospitalModel.FK_Appointments_Patients1" ManuallyRouted="false" />
         <AssociationConnector Association="Privat_HospitalModel.FK_Conclusions_Doctors1" ManuallyRouted="false" />
         <AssociationConnector Association="Privat_HospitalModel.FK_Conclusions_Patients1" ManuallyRouted="false" />
         <AssociationConnector Association="Privat_HospitalModel.FK_Doctors_Types_of_services" ManuallyRouted="false" />
         <AssociationConnector Association="Privat_HospitalModel.FK_Doctors_Work_Shift" ManuallyRouted="false" />
-        <AssociationConnector Association="Privat_HospitalModel.FK_Authorization_history_Admins" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

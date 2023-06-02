@@ -20,7 +20,7 @@
                 <DataGrid CanUserSortColumns="False" CanUserResizeRows="False" AutoGenerateColumns="False" CanUserResizeColumns="False" IsReadOnly="True" ColumnWidth="*" x:Name="dgAuthHistory">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Логин администратора" Binding="{Binding Admins.Login}"/>
-                        <DataGridTextColumn Header="Дата и время" Binding="{Binding DateAuth, StringFormat=dd.MM.yyyy HH:mm}"/>
+                        <DataGridTextColumn Header="Дата и время" Binding="{Binding Date_Auth, StringFormat=dd.MM.yyyy HH:mm}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>

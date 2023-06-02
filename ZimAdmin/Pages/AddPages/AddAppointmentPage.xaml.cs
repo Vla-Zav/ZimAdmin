@@ -61,8 +61,8 @@ namespace ZimAdmin.Pages
             }
 
             currentAppointment.Patients = (Patients)cbPatients.SelectedItem;
-            currentAppointment.id_Patient = currentAppointment.Patients.id_Patient;
-            currentAppointment.id_Doctor = currentAppointment.Doctors.id_Doctor;
+            currentAppointment.Id_Patient = currentAppointment.Patients.Id_Patient;
+            currentAppointment.Id_Doctor = currentAppointment.Doctors.Id_Doctor;
             currentAppointment.DataTime_Appointment = dtpAppointmentDate.Value.Value;
 
             try
