@@ -31,7 +31,7 @@ namespace ZimAdmin
 
         private void mainFrame_ContentRendered(object sender, EventArgs e)
         {
-            if (AuthPage.admins != null)
+            if (CurrentAdmin.GetAdmin().Id_Admin != 0)
             {
                 navigate.Visibility = Visibility.Visible;
                 myInfo.Visibility = Visibility.Visible;
@@ -57,7 +57,7 @@ namespace ZimAdmin
             if(MessageBox.Show("Вы точно хотите выйти из аккаунта?", "Вы уверены?", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 ManageClass.getFrame.Navigate(new AuthPage());
-                AuthPage.admins = null;
+                CurrentAdmin.SetAdmin(null);
                 AuthPage.unsuccessfulAttempts = 0;
             }
         }

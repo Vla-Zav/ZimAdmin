@@ -25,7 +25,7 @@ namespace ZimAdmin.Pages
         CharsBlocker blocker = new CharsBlocker();
         
         Privat_HospitalEntities hospitalEntities = new Privat_HospitalEntities();
-        public static Admins admins;
+        private static Admins admins;
         Authorization_history history;
 
         public static int unsuccessfulAttempts = 0;
@@ -41,7 +41,7 @@ namespace ZimAdmin.Pages
             {
                 try
                 {
-                    DataContext = admins;
+                    CurrentAdmin.SetAdmin(admins);
                     history.Date_Auth = DateTime.Now;
                     history.Id_Admin = admins.Id_Admin;
                     GetDbContext.GetContext().Authorization_history.Add(history);

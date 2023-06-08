@@ -29,7 +29,7 @@ namespace ZimAdmin.Pages
         public EditProfilePage()
         {
             InitializeComponent();
-            currentAdmin = GetDbContext.GetContext().Admins.Find(AuthPage.admins.Id_Admin);
+            currentAdmin = GetDbContext.GetContext().Admins.Find(CurrentAdmin.GetAdmin().Id_Admin);
             DataContext = currentAdmin;
         }
 
@@ -55,7 +55,7 @@ namespace ZimAdmin.Pages
             if (string.IsNullOrEmpty(currentAdmin.Login))
                 errors.AppendLine("Логин не может бить пустым");
             else if (currentAdmin.Login.Length < 3)
-                        errors.AppendLine("Логин слигком короткий (минимум 3 символа)");
+                errors.AppendLine("Логин слигком короткий (минимум 3 символа)");
 
             if (errors.Length > 0)
             {
@@ -67,6 +67,7 @@ namespace ZimAdmin.Pages
             {
                 MessageBox.Show("Данные изменены", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Information);
                 GetDbContext.GetContext().SaveChanges();
+                CurrentAdmin.SetAdmin(currentAdmin);
                 ManageClass.getFrame.GoBack();
             }
             catch (Exception ex)

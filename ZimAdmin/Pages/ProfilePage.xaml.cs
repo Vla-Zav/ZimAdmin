@@ -22,11 +22,11 @@ namespace ZimAdmin.Pages
     /// </summary>
     public partial class ProfilePage : Page
     {
-        private Admins currentAdmin = GetDbContext.GetContext().Admins.Find(AuthPage.admins.Id_Admin);
+        Admins currentAdmin = CurrentAdmin.GetAdmin();
         public ProfilePage()
         {
             InitializeComponent();
-            DataContext = currentAdmin;
+            DataContext = CurrentAdmin.GetAdmin();
         }
 
         private void btnEditProfile_Click(object sender, RoutedEventArgs e)
@@ -37,6 +37,12 @@ namespace ZimAdmin.Pages
         private void btnAuthHistory_Click(object sender, RoutedEventArgs e)
         {
             ManageClass.getFrame.Navigate(new AuthHistoryPage());
+        }
+
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if(Visibility == Visibility.Visible)
+                DataContext = CurrentAdmin.GetAdmin();
         }
     }
 }
