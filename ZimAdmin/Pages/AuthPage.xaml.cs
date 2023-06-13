@@ -67,7 +67,12 @@ namespace ZimAdmin.Pages
             ManageClass.getFrame.Navigate(new RegPage());
         }
 
-
+        /// <summary>
+        /// Проверка введёных данных для авторизации
+        /// </summary>
+        /// <param name="currentLogin">Введённых логин</param>
+        /// <param name="currentPassword">Введённый пароль</param>
+        /// <returns>true, если данные верны, false, если нет</returns>
         public bool IsAuth(string currentLogin, string currentPassword)
         {
             bool isAuth;
@@ -91,6 +96,7 @@ namespace ZimAdmin.Pages
         private void specialCharsBlocker_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             blocker.SpecialCharsBlocker(e);
+            blocker.NoRussianLetters(e);
         }
         private void spaceBlocker_PreviewKeyDown(object sender, KeyEventArgs e)
         {

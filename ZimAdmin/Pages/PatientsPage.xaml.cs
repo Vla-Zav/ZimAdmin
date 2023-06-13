@@ -53,7 +53,9 @@ namespace ZimAdmin.Pages
                 dgPatients.ItemsSource = GetDbContext.GetContext().Patients.ToList();
             }
         }
-
+        /// <summary>
+        /// Посик пациентов по фамилии
+        /// </summary>
         private void SearchPatient()
         {
             List<Patients> patients = GetDbContext.GetContext().Patients.ToList();
@@ -74,19 +76,19 @@ namespace ZimAdmin.Pages
             dgPatients.ItemsSource = patients;
         }
 
-        private void SearchPatient(object sender, TextChangedEventArgs e)
-        {
-            SearchPatient();
-        }
-
         private void tbxSearchLName_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            blocker.OnlyLetters(e);
+            blocker.RussianLetters(e);
         }
 
         private void tbxSearchLName_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             blocker.SpaceBlocker(e);
+        }
+
+        private void tbxSearchLName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SearchPatient();
         }
     }
 }

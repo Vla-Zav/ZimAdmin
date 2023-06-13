@@ -14,10 +14,10 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <StackPanel HorizontalAlignment="Left">
-            <StackPanel Margin="10">
-                <TextBlock HorizontalAlignment="Left" Text="Название услуги" Style="{StaticResource tbTemplate}"/>
+            <WrapPanel Margin="10">
+                <TextBlock HorizontalAlignment="Left" Text="Название услуги: " Style="{StaticResource tbTemplate}"/>
                 <TextBox x:Name="tbxNewService" Text="{Binding Name}" Height="29" MaxLength="20" Style="{StaticResource tbxTemplate}" PreviewTextInput="specialCharsBlocker_PreviewTextInput"/>
-            </StackPanel>
+            </WrapPanel>
             <StackPanel Margin="10" Orientation="Horizontal">
                 <TextBlock Text="Стоимость:" Style="{StaticResource tbTemplate}"/>
                 <TextBox x:Name="tbxCostService" Width="auto" Text="{Binding Cost}" MinWidth="162.5" MaxLength="7" Style="{StaticResource tbxTemplate}" PreviewTextInput="onlyNumbers_PreviewTextInput" PreviewKeyDown="spaceAndZeroBlocker_PreviewKeyDown"/>

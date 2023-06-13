@@ -14,7 +14,11 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <StackPanel Margin="10">
-            <TextBlock Text="Заключения" Style="{StaticResource tbTemplate}" HorizontalAlignment="Left"/>
+            <TextBlock Style="{StaticResource tbTemplate}">
+                <Run Text="Заключения"/>
+                <Run Text="{Binding Patients.Last_Name}"/>
+            </TextBlock>
+            <TextBlock x:Name="tbNotFound" Visibility="Collapsed" Text="Заключений нет" Style="{StaticResource tbTemplate}"/>
             <DataGrid CanUserSortColumns="False" x:Name="dgCounclusion" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Доктор" Binding="{Binding Doctors.Last_Name}"/>
@@ -58,7 +62,8 @@
             </DataGrid>
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0 10" HorizontalAlignment="Right">
-            <Button x:Name="btnExport" Content="Сформировать заключение" Style="{StaticResource btnTemplate}" Click="btnExport_Click" />
+            <Button x:Name="btnPrint" Content="Печать" Style="{StaticResource btnTemplate}" Click="btnPrint_Click"/>
+            <Button x:Name="btnExport" Content="Сформировать заключение" Style="{StaticResource btnTemplate}" Width="auto" Click="btnExport_Click" />
             <Button x:Name="bltnBack" Content="Назад" Style="{StaticResource btnTemplate}" Click="btnBack_Click"/>
         </StackPanel>
     </Grid>

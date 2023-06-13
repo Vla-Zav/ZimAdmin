@@ -22,9 +22,11 @@ namespace ZimAdmin.Pages
     /// </summary>
     public partial class AppointmentsPage : Page
     {
+        CharsBlocker blocker = new CharsBlocker();
         public AppointmentsPage()
         {
             InitializeComponent();
+            UploadAppointments();
         }
 
         private void btnAddAppointment_Click(object sender, RoutedEventArgs e)
@@ -36,8 +38,8 @@ namespace ZimAdmin.Pages
         {
             if (Visibility == Visibility.Visible)
             {
-                HasData();
                 GetDbContext.GetContext().ChangeTracker.Entries().ToList().ForEach(entry => entry.Reload());
+                UploadAppointments();
             }
         }
 
@@ -61,10 +63,16 @@ namespace ZimAdmin.Pages
                 { MessageBox.Show(ex.Message, "Ошибка базы данных", MessageBoxButton.OK, MessageBoxImage.Error); }
             }
         }
-        private void HasData()
+        /// <summary>
+        /// Поиск и закгрузка заключений
+        /// </summary>
+        private void UploadAppointments()
         {
-            dgAppointments.ItemsSource = GetDbContext.GetContext().Appointments.ToList();
-            if (dgAppointments.Items.Count == 0)
+            List<Appointments> appointments = GetDbContext.GetContext().Appointments.ToList();
+
+            appointments = appointments.Where(p => p.Patients.Last_Name.ToLower().Contains(tbxSearchLName.Text.ToLower())).ToList();
+
+            if (appointments.Count == 0)
             {
                 dgAppointments.Visibility = Visibility.Collapsed;
                 tbNotFound.Visibility = Visibility.Visible;
@@ -74,6 +82,23 @@ namespace ZimAdmin.Pages
                 dgAppointments.Visibility = Visibility.Visible;
                 tbNotFound.Visibility = Visibility.Collapsed;
             }
+
+            dgAppointments.ItemsSource = appointments;
+        }
+
+        private void tbxSearchLName_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            blocker.RussianLetters(e);
+        }
+
+        private void tbxSearchLName_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            blocker.SpaceBlocker(e);
+        }
+
+        private void SearchPatients(object sender, TextChangedEventArgs e)
+        {
+            UploadAppointments();
         }
     }
 }

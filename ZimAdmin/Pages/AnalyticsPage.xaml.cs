@@ -39,6 +39,9 @@ namespace ZimAdmin.Pages
 
             cbAnalytics.SelectedIndex = 0;
         }
+        /// <summary>
+        /// Выбор данных для аналитики
+        /// </summary>
         private void SelectedAnalytics()
         {
             Series currentSeries = chartsServices.Series.FirstOrDefault();
@@ -50,7 +53,6 @@ namespace ZimAdmin.Pages
             DbSet<Work_shift> shifts = GetDbContext.GetContext().Work_shift;
 
             List<Appointments> appointmentsList = appointments.ToList();
-
 
             switch (cbAnalytics.SelectedIndex)
             {

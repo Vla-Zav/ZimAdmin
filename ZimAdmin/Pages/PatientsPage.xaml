@@ -19,7 +19,7 @@
             
             <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
                 <TextBlock Text="Фамилия:" Style="{StaticResource tbTemplate}"/>
-                <TextBox x:Name="tbxSearchLName" Style="{StaticResource tbxTemplate}" TextChanged="SearchPatient" PreviewTextInput="tbxSearchLName_PreviewTextInput" PreviewKeyDown="tbxSearchLName_PreviewKeyDown" />
+                <TextBox x:Name="tbxSearchLName" Style="{StaticResource tbxTemplate}" TextChanged="tbxSearchLName_TextChanged" PreviewTextInput="tbxSearchLName_PreviewTextInput" PreviewKeyDown="tbxSearchLName_PreviewKeyDown" />
             </StackPanel>
             <Grid>
                 <TextBlock x:Name="tbNotFound" Text="Ничего не найдено" Visibility="Collapsed" Style="{StaticResource tbTemplate}"/>

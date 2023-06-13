@@ -34,9 +34,16 @@ namespace ZimAdmin.Pages
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder errors = new StringBuilder();
+            int cost = 0;
+
+            int.TryParse(tbxCostService.Text, out cost);
+
+            services.Cost = cost;
 
             if (services.Cost <= 0)
+            {
                 errors.AppendLine("Некорректная стоимость");
+            }
 
             if (errors.Length > 0)
             {

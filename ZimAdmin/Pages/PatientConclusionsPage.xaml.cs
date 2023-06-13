@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -29,7 +30,17 @@ namespace ZimAdmin.Pages
         {
             InitializeComponent();
             currentPatient = patients;
+            DataContext = GetDbContext.GetContext().Conclusions.Where(p => p.Id_Patient == patients.Id_Patient).ToList();
             dgCounclusion.ItemsSource = GetDbContext.GetContext().Conclusions.Where(p => p.Id_Patient == patients.Id_Patient).ToList();
+            if(dgCounclusion.Items.Count == 0)
+            {
+                tbNotFound.Visibility = Visibility.Visible;
+                dgCounclusion.Visibility = Visibility.Collapsed;
+            }
+            else {
+                tbNotFound.Visibility = Visibility.Collapsed;
+                dgCounclusion.Visibility= Visibility.Visible;
+            }
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -40,8 +51,25 @@ namespace ZimAdmin.Pages
         private void btnExport_Click(object sender, RoutedEventArgs e)
         {
             Conclusions conclusion = (Conclusions)dgCounclusion.SelectedItem;
+            Word.Application application = new Word.Application();
+            Word.Document document = new Word.Document();
+            GetDodument(ref application, ref document, conclusion);
+            application.Visible = true;
+        }
 
-            if (conclusion == null )
+        private void btnPrint_Click(object sender, RoutedEventArgs e)
+        {
+            Conclusions conclusion = (Conclusions)dgCounclusion.SelectedItem;
+            Word.Application application = new Word.Application();
+            Word.Document document = new Word.Document();
+            GetDodument(ref application, ref document, conclusion);
+            document.PrintOut();
+            document.Close();
+        }
+
+        private void GetDodument(ref Word.Application application, ref Word.Document document, Conclusions conclusion)
+        {
+            if (conclusion == null)
             {
                 MessageBox.Show("Выберете заключение для составления документа");
                 return;
@@ -49,10 +77,7 @@ namespace ZimAdmin.Pages
 
             try
             {
-
-                Word.Application application = new Word.Application();
-
-                Word.Document document = application.Documents.Add();
+                document = application.Documents.Add();
 
                 Word.Paragraph headerParagraph = document.Paragraphs.Add();
                 Word.Range headerRange = headerParagraph.Range;
@@ -63,7 +88,7 @@ namespace ZimAdmin.Pages
 
                 Word.Paragraph patientParagraph = document.Paragraphs.Add();
                 Word.Range patientRange = headerParagraph.Range;
-                patientRange.Text = $"ФИО пациента: {conclusion.Patients.Last_Name} {conclusion.Patients.First_Name} {conclusion.Patients.Middle_Name}." +
+                patientRange.Text = $"ФИО пациента: {conclusion.Patients.Last_Name} {conclusion.Patients.First_Name} {conclusion.Patients.Middle_Name}. " +
                     $"Дата рождения: {conclusion.Patients.Bithday.ToShortDateString()}.";
                 patientRange.Font.Size = 14;
                 patientRange.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft;
@@ -105,12 +130,11 @@ namespace ZimAdmin.Pages
                 signatureRange.Text = "Подпись врача: __________";
                 signatureRange.Font.Bold = 1;
 
-                application.Visible = true;
-
                 document.SaveAs2($"Заключение от {DateTime.Today.ToShortDateString()} В.{conclusion.Doctors.Last_Name} П.{conclusion.Patients.Last_Name} №{conclusion.Id_Counclusion}.docx");
                 document.SaveAs2($"Заключение от {DateTime.Today.ToShortDateString()} В.{conclusion.Doctors.Last_Name} П.{conclusion.Patients.Last_Name} №{conclusion.Id_Counclusion}.pdf", Word.WdExportFormat.wdExportFormatPDF);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Ошибка работы с документом", MessageBoxButton.OK, MessageBoxImage.Warning); }
         }
+
     }
 }

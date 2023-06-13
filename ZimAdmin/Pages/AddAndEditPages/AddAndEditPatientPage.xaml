@@ -14,32 +14,31 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="0">
-            <TextBlock Style="{StaticResource tbTemplate}" HorizontalAlignment="Left" Margin="10 10 0 0" Text="Фамилия"/>
-            <TextBox x:Name="tbxPatientLastName" Style="{StaticResource tbxTemplate}" HorizontalAlignment="Left" Margin="10 0 0 10" Text="{Binding Last_Name}"
+        <WrapPanel>
+
+            <StackPanel Grid.Row="0">
+                <TextBlock Style="{StaticResource tbTemplate}" HorizontalAlignment="Left" Margin="10 10 0 0" Text="Фамилия"/>
+                <TextBox x:Name="tbxPatientLastName" Style="{StaticResource tbxTemplate}" HorizontalAlignment="Left" Margin="10 0 0 10" Text="{Binding Last_Name}"
                      PreviewTextInput="onlyLetters_PreviewTextInput" PreviewKeyDown="spaceBlocker_PreviewKeyDown"/>
-            <TextBlock Style="{StaticResource tbTemplate}" HorizontalAlignment="Left" Margin="10 10 0 0" Text="Имя"/>
-            <TextBox x:Name="tbxPatientFirstName" Style="{StaticResource tbxTemplate}" HorizontalAlignment="Left" Margin="10 0 0 10" Text="{Binding First_Name}"
+                <TextBlock Style="{StaticResource tbTemplate}" HorizontalAlignment="Left" Margin="10 10 0 0" Text="Имя"/>
+                <TextBox x:Name="tbxPatientFirstName" Style="{StaticResource tbxTemplate}" HorizontalAlignment="Left" Margin="10 0 0 10" Text="{Binding First_Name}"
                      PreviewTextInput="onlyLetters_PreviewTextInput" PreviewKeyDown="spaceBlocker_PreviewKeyDown"/>
-            <TextBlock Style="{StaticResource tbTemplate}" HorizontalAlignment="Left" Margin="10 10 0 0" Text="Отчество"/>
-            <TextBox x:Name="tbxPatientMiddleName" Style="{StaticResource tbxTemplate}" HorizontalAlignment="Left" Margin="10 0 0 10" Text="{Binding Middle_Name}"
+                <TextBlock Style="{StaticResource tbTemplate}" HorizontalAlignment="Left" Margin="10 10 0 0" Text="Отчество"/>
+                <TextBox x:Name="tbxPatientMiddleName" Style="{StaticResource tbxTemplate}" HorizontalAlignment="Left" Margin="10 0 0 10" Text="{Binding Middle_Name}"
                      PreviewTextInput="onlyLetters_PreviewTextInput" PreviewKeyDown="spaceBlocker_PreviewKeyDown"/>
-        </StackPanel>
-        <StackPanel Grid.Column="1">
-            <TextBlock Style="{StaticResource tbTemplate}" HorizontalAlignment="Left" Margin="10 10 0 0" Text="Телефон"/>
-            <xctk:MaskedTextBox Mask="+7(999)-999-99-99" x:Name="tbxPatientPhone" Style="{StaticResource tbxTemplate}" HorizontalAlignment="Left
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <TextBlock Style="{StaticResource tbTemplate}" HorizontalAlignment="Left" Margin="10 10 0 0" Text="Телефон"/>
+                <xctk:MaskedTextBox Mask="+7(999)-999-99-99" x:Name="tbxPatientPhone" Style="{StaticResource tbxTemplate}" HorizontalAlignment="Left
                                 " Width="auto" Margin="10 0 0 10" Text="{Binding Phone}"/>
-            <TextBlock Style="{StaticResource tbTemplate}" HorizontalAlignment="Left" Margin="10 10 0 0" Text="Дата рождения"/>
-            <DatePicker x:Name="calBDPatient" SelectedDate="{Binding Bithday}" Margin="10 0" FontSize="20"
+                <TextBlock Style="{StaticResource tbTemplate}" HorizontalAlignment="Left" Margin="10 10 0 0" Text="Дата рождения"/>
+                <DatePicker x:Name="calBDPatient" SelectedDate="{Binding Bithday}" Margin="10 0" FontSize="20"
                         HorizontalAlignment="Left" DisplayDateStart="1900-01-01" DisplayDateEnd="2023-01-01" PreviewKeyDown="calBDPatient_PreviewKeyDown"/>
-        </StackPanel>
-        <StackPanel Grid.ColumnSpan="2" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="1" Margin="0 10" Grid.Column="1">
-            <Button x:Name="btnSaveChanges" Content="Сохранить" Style="{StaticResource btnTemplate}" HorizontalAlignment="Left" Click="btnSaveChanges_Click"/>
-            <Button x:Name="btnBack" Content="Назад" Style="{StaticResource btnTemplate}" Click="btnBack_Click" HorizontalAlignment="Left"/>
+            </StackPanel>
+        </WrapPanel>
+        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="1" Margin="0 10" >
+            <Button x:Name="btnSaveChanges" Content="Сохранить" Style="{StaticResource btnTemplate}" Click="btnSaveChanges_Click"/>
+            <Button x:Name="btnBack" Content="Назад" Style="{StaticResource btnTemplate}" Click="btnBack_Click"/>
         </StackPanel>
     </Grid>
 </Page>

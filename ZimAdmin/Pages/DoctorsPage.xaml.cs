@@ -77,11 +77,14 @@ namespace ZimAdmin.Pages
                     GetDbContext.GetContext().SaveChanges();
                     dgDoctors.ItemsSource = GetDbContext.GetContext().Doctors.ToList();
                 }
-                catch (Exception ex)
-                { MessageBox.Show(ex.Message, "Ошибка базы данных", MessageBoxButton.OK, MessageBoxImage.Error); }
+                catch
+                { MessageBox.Show("У этого врача есть запись", "Ошибка удаления", MessageBoxButton.OK, MessageBoxImage.Error); }
             }
         }
 
+        /// <summary>
+        /// Загрузка и фильтрация врачей
+        /// </summary>
         private void SearchDoctors()
         {
             List<Doctors> doctors = GetDbContext.GetContext().Doctors.ToList();

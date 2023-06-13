@@ -34,6 +34,12 @@ namespace ZimAdmin.Pages.AddPages
         {
             StringBuilder errors = new StringBuilder();
 
+            int cost = 0;
+
+            int.TryParse(tbxCostService.Text, out cost);
+
+            services.Cost = cost;
+
             if (string.IsNullOrWhiteSpace(services.Name))
                 errors.AppendLine("Название услуги не указано");
             else if (services.Name.Length < 3)

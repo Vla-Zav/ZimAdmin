@@ -17,7 +17,7 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0" x:Name="navigate" Background="#FF2C333A" HorizontalAlignment="Left" Width="230">
+        <StackPanel Grid.Column="0" x:Name="navigate" Background="#FF2C3337" HorizontalAlignment="Left" Width="230">
             <Grid Height="50" VerticalAlignment="Top" Margin="0 30 0 0">
                 <Image Source="/Resources/Icons/heartbeat.png" HorizontalAlignment="Left" Margin="2 5" VerticalAlignment="Center"/>
                 <Border Background="#FF6495ED" Height="30" CornerRadius="5 0 0 5"

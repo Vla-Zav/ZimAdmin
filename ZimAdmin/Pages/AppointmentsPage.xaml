@@ -15,7 +15,12 @@
         </Grid.RowDefinitions>
         <StackPanel Margin="10">
             <TextBlock Text="Приёмы" Margin="0 0 0 15" Style="{StaticResource tbTemplate}"/>
-            <TextBlock x:Name="tbNotFound" Text="Здесь пока ничего нет" Visibility="Collapsed" Style="{StaticResource tbTemplate}"/>
+            
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                <TextBlock Text="Фамилия пациента:" Style="{StaticResource tbTemplate}"/>
+                <TextBox x:Name="tbxSearchLName" Style="{StaticResource tbxTemplate}" TextChanged="SearchPatients" PreviewTextInput="tbxSearchLName_PreviewTextInput" PreviewKeyDown="tbxSearchLName_PreviewKeyDown" />
+            </StackPanel>
+            <TextBlock x:Name="tbNotFound" Text="Ничего не найдено" Visibility="Collapsed" Style="{StaticResource tbTemplate}"/>
             <DataGrid x:Name="dgAppointments" IsReadOnly="True" ColumnWidth="*" AutoGenerateColumns="False" CanUserResizeRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Доктор" Binding="{Binding Doctors.Last_Name}"/>
