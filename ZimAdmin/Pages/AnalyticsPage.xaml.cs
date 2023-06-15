@@ -76,7 +76,7 @@ namespace ZimAdmin.Pages
                             currentSeries.ChartType = SeriesChartType.Pie;
                             
                             currentSeries.Points.AddXY($"{doc.Last_Name} {doc.First_Name}",
-                                appointments.ToList().Where(a => a.Id_Doctor == doc.Id_Doctor).Sum(s => s.Doctors.Types_of_services.Cost));
+                                appointments.ToList().Where(a => a.Id_Doctor.Equals(doc.Id_Doctor)).Sum(s => s.Doctors.Types_of_services.Cost));
                         
                             exportPanel.Visibility = Visibility.Visible;
                         }
