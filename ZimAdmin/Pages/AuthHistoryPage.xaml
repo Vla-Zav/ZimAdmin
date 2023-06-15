@@ -17,7 +17,7 @@
             <TextBlock Text="История авторизаций" Margin="0 0 0 15" Style="{StaticResource tbTemplate}"/>
             <Grid>
                 <TextBlock x:Name="tbNotFound" Text="Здесь пока ничего нет" Visibility="Collapsed" Style="{StaticResource tbTemplate}"/>
-                <DataGrid CanUserSortColumns="False" CanUserResizeRows="False" AutoGenerateColumns="False" CanUserResizeColumns="False" IsReadOnly="True" ColumnWidth="*" x:Name="dgAuthHistory">
+                <DataGrid ColumnWidth="*" x:Name="dgAuthHistory">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Логин администратора" Binding="{Binding Admins.Login}"/>
                         <DataGridTextColumn Header="Дата и время" Binding="{Binding Date_Auth, StringFormat=dd.MM.yyyy HH:mm}"/>
